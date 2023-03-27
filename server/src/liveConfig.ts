@@ -12,8 +12,6 @@ if (!fs.existsSync("./upvotr.config.json")) {
   fs.writeFileSync("./upvotr.config.json", "{}");
 }
 
-console.log("config:", fs.readFileSync("./upvotr.config.json", "utf-8"));
-
 const fileConfig: UpVotrConfig = JSON.parse(
   fs.readFileSync("./upvotr.config.json", "utf-8")
 );
