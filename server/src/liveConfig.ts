@@ -13,11 +13,11 @@ if (!fs.existsSync("upvotr.config.json")) {
 }
 
 const fileConfig: UpVotrConfig = JSON.parse(
-  JSON.parse(fs.readFileSync("upvotr.config.json", "utf-8"))
+  fs.readFileSync("./upvotr.config.json", "utf-8")
 );
 
 let updateTimeout: NodeJS.Timeout;
-fs.watch("upvotr.config.json", "utf-8", (e) => {
+fs.watch("./upvotr.config.json", "utf-8", (e) => {
   if (e === "change") {
     clearTimeout(updateTimeout);
     setTimeout(() => {
