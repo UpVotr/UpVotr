@@ -8,9 +8,11 @@ const defaultConfig: Required<UpVotrConfig> = {
   }
 };
 
-if (!fs.existsSync("upvotr.config.json")) {
-  fs.writeFileSync("upvotr.config.json", "{}");
+if (!fs.existsSync("./upvotr.config.json")) {
+  fs.writeFileSync("./upvotr.config.json", "{}");
 }
+
+console.log("config:", fs.readFileSync("./upvotr.config.json", "utf-8"));
 
 const fileConfig: UpVotrConfig = JSON.parse(
   fs.readFileSync("./upvotr.config.json", "utf-8")
@@ -21,7 +23,7 @@ fs.watch("./upvotr.config.json", "utf-8", (e) => {
   if (e === "change") {
     clearTimeout(updateTimeout);
     setTimeout(() => {
-      fs.readFile("upvotr.config.json", "utf-8", (err, data) => {
+      fs.readFile("./upvotr.config.json", "utf-8", (err, data) => {
         if (err) throw err;
         for (const key in fileConfig) {
           delete (fileConfig as any)[key];
