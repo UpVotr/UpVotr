@@ -4,6 +4,7 @@ import next from "next";
 import type { NextServer } from "next/dist/server/next";
 import { ContentWatcher } from "./dev/contentWatcher";
 import { liveConfig } from "./liveConfig";
+import chalk from "chalk";
 
 const serverModule: HotModule<
   {
@@ -36,7 +37,12 @@ const serverModule: HotModule<
       return handle(req, res);
     });
 
-    expressApp.listen(serverConf.port, () => {});
+    expressApp.listen(serverConf.port, () => {
+      console.log(
+        chalk.hex("#ea580c")("[UpVotr]:"),
+        `Ready on http://${serverConf.hostname}:${serverConf.port}`
+      );
+    });
 
     return {
       nextApp,
