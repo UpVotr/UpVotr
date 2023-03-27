@@ -1,10 +1,26 @@
 import { UpVotrConfig } from "./config";
 import fs from "fs";
 
-const defaultConfig: Required<UpVotrConfig> = {
+type DeepRequired<T> = T extends object
+  ? {
+      [k in keyof Required<T>]: DeepRequired<T[k]>;
+    }
+  : T;
+
+const defaultConfig: DeepRequired<UpVotrConfig> = {
   server: {
     hostname: "localhost",
     port: 3000
+  },
+  mysql: {
+    database: {
+      name: "upvotr",
+      tableMap: {}
+    },
+    login: {
+      user: "",
+      password: ""
+    }
   }
 };
 

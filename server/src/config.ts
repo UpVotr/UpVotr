@@ -18,6 +18,34 @@ export interface UpVotrConfig {
         production: ServerConfig;
         development: ServerConfig;
       };
+  /**
+   * Configuration for the MySQL connection
+   */
+  mysql: {
+    /**
+     * Configuration for the database structure. Database MUST be cleared between changes to this configuration.
+     */
+    database?: {
+      name?: string;
+      /**
+       * Table name mappings, for custom table names. Only use this setting if you know what you are doing.
+       */
+      tableMap?: {
+        /**
+         * Table name
+         */
+        [k: string]: string;
+      };
+    };
+    /**
+     * Login credentials for the database connection
+     */
+    login: {
+      user: string;
+      password: string;
+    };
+    [k: string]: unknown;
+  };
 }
 /**
  * Server hostname and port

@@ -26,6 +26,38 @@
         }
       ],
       "additionalProperties": false
+    },
+    "mysql": {
+      "description": "Configuration for the MySQL connection",
+      "type": "object",
+      "properties": {
+        "database": {
+          "description": "Configuration for the database structure. Database MUST be cleared between changes to this configuration.",
+          "type": "object",
+          "properties": {
+            "name": { "type": "string" },
+            "tableMap": {
+              "description": "Table name mappings, for custom table names. Only use this setting if you know what you are doing.",
+              "additionalProperties": {
+                "description": "Table name",
+                "type": "string"
+              }
+            }
+          },
+          "additionalProperties": false
+        },
+        "login": {
+          "description": "Login credentials for the database connection",
+          "type": "object",
+          "properties": {
+            "user": { "type": "string" },
+            "password": { "type": "string" }
+          },
+          "required": ["user", "password"],
+          "additionalProperties": false
+        }
+      },
+      "required": ["login"]
     }
   },
   "definitions": {
@@ -40,5 +72,6 @@
       "additionalProperties": false
     }
   },
+  "required": ["mysql"],
   "additionalProperties": false
 }
