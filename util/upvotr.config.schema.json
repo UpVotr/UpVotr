@@ -35,7 +35,7 @@
           "description": "Configuration for the database structure. Database MUST be cleared between changes to this configuration.",
           "type": "object",
           "properties": {
-            "name": { "type": "string" },
+            "name": { "type": "string", "default": "upvotr" },
             "tableMap": {
               "description": "Table name mappings, for custom table names. Only use this setting if you know what you are doing.",
               "additionalProperties": {
@@ -55,6 +55,11 @@
           },
           "required": ["user", "password"],
           "additionalProperties": false
+        },
+        "autoconfigure": {
+          "description": "Whether or not to automatically configure the database using CREATE IF NOT EXISTS",
+          "type": "boolean",
+          "default": true
         }
       },
       "required": ["login"]
@@ -65,8 +70,8 @@
       "description": "Server hostname and port",
       "type": "object",
       "properties": {
-        "hostname": { "type": "string" },
-        "port": { "type": "number" }
+        "hostname": { "type": "string", "default": "localhost" },
+        "port": { "type": "number", "default": 3000 }
       },
       "required": ["hostname", "port"],
       "additionalProperties": false

@@ -20,7 +20,8 @@ const defaultConfig: DeepRequired<UpVotrConfig> = {
     login: {
       user: "",
       password: ""
-    }
+    },
+    autoconfigure: true
   }
 };
 

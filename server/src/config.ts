@@ -44,6 +44,10 @@ export interface UpVotrConfig {
       user: string;
       password: string;
     };
+    /**
+     * Whether or not to automatically configure the database using CREATE IF NOT EXISTS
+     */
+    autoconfigure?: boolean;
     [k: string]: unknown;
   };
 }
