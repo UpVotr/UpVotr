@@ -1,0 +1,44 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "title": "UpVotrConfig",
+  "$id": "https://upvotr.io/upvotr.config.schema.json",
+  "description": "Format of the UpVotr configuration file.",
+  "type": "object",
+  "properties": {
+    "server": {
+      "description": "Production and development server configuration",
+      "anyOf": [
+        {
+          "$ref": "#/definitions/server_config"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "production": {
+              "$ref": "#/definitions/server_config"
+            },
+            "development": {
+              "$ref": "#/definitions/server_config"
+            }
+          },
+          "required": ["production", "development"],
+          "additionalProperties": false
+        }
+      ],
+      "additionalProperties": false
+    }
+  },
+  "definitions": {
+    "server_config": {
+      "description": "Server hostname and port",
+      "type": "object",
+      "properties": {
+        "hostname": { "type": "string" },
+        "port": { "type": "number" }
+      },
+      "required": ["hostname", "port"],
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}
