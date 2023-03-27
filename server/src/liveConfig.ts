@@ -84,8 +84,7 @@ class DeepDefault<T extends Record<string | symbol, any>>
   }
 }
 
-export const liveConfig = () =>
-  new Proxy<UpVotrConfig>(
-    fileConfig || {},
-    new DeepDefault(defaultConfig)
-  ) as Required<UpVotrConfig>;
+export const config = new Proxy<UpVotrConfig>(
+  fileConfig,
+  new DeepDefault(defaultConfig)
+) as Required<UpVotrConfig>;

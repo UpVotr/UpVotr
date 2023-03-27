@@ -3,7 +3,7 @@ import express from "express";
 import next from "next";
 import type { NextServer } from "next/dist/server/next";
 import { ContentWatcher } from "./dev/contentWatcher";
-import { liveConfig } from "./liveConfig";
+import { config } from "./liveConfig";
 import chalk from "chalk";
 
 const serverModule: HotModule<
@@ -15,7 +15,6 @@ const serverModule: HotModule<
   {}
 > = {
   async getPersistentValues() {
-    const config = liveConfig();
     const dev = process.env.NODE_ENV === "development";
     const runtime = new HMRRuntime(dev && new ContentWatcher(require), require);
     const serverConf =
