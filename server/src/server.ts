@@ -11,7 +11,7 @@ const serverModule: HotModule<
     expressApp: Express.Application;
     runtime: HMRRuntime;
   },
-  void
+  {}
 > = {
   async getPersistentValues() {
     const config = liveConfig();
@@ -45,7 +45,9 @@ const serverModule: HotModule<
     };
   },
   async cleanupPersistentValues(persistentValues) {},
-  run() {},
+  run() {
+    return {};
+  },
   cleanup() {}
 };
 
