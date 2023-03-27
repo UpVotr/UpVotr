@@ -48,3 +48,5 @@ const serverModule: HotModule<
   run() {},
   cleanup() {}
 };
+
+export = serverModule;
