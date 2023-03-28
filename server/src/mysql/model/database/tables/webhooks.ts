@@ -11,5 +11,11 @@ export const webhooks = new Table(getTableName(tables.webhooks), [
     name: "url",
     type: "TEXT",
     notNull: true
+  },
+  {
+    name: "webhookId",
+    type: "SMALLINT UNSIGNED",
+    notNull: true,
+    raw: "`webhookId` SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT"
   }
 ] as const);
