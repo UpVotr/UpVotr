@@ -37,12 +37,14 @@ export const posts = new Table(
       raw: "`postId` BIGINT UNSIGNED AUTO_INCREMENT"
     },
     {
-      name: "answeredBy",
+      name: "resolvedBy",
       type: "MEDIUMINT"
     },
     {
-      name: "answerType",
-      type: "TINYINT"
+      name: "status",
+      type: "TINYINT",
+      notNull: true,
+      default: "0"
     }
   ] as const,
   "PRIMARY KEY (`postId`)"
