@@ -5,11 +5,6 @@ export const sessions = new Table(
   getTableName(tables.sessions),
   [
     {
-      name: "loggedIn",
-      type: "BOOLEAN",
-      default: "FALSE"
-    },
-    {
       name: "userId",
       type: "BINARY(16)" as "BINARY",
       notNull: true
