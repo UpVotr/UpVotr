@@ -17,7 +17,11 @@ const defaultConfig: DeepRequired<UpVotrConfig> = {
       user: "",
       password: ""
     },
-    autoconfigure: true
+    autoconfigure: true,
+    connection: {
+      connectionLimit: 10,
+      host: "127.0.0.1"
+    }
   }
 };
 

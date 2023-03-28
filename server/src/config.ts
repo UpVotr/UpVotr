@@ -48,6 +48,14 @@ export interface UpVotrConfig {
      * Whether or not to automatically configure the database using CREATE IF NOT EXISTS
      */
     autoconfigure?: boolean;
+    /**
+     * Configuration for pool connection
+     */
+    connection?: {
+      connectionLimit?: number;
+      host?: string;
+      [k: string]: unknown;
+    };
     [k: string]: unknown;
   };
 }

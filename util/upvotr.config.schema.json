@@ -60,6 +60,14 @@
           "description": "Whether or not to automatically configure the database using CREATE IF NOT EXISTS",
           "type": "boolean",
           "default": true
+        },
+        "connection": {
+          "description": "Configuration for pool connection",
+          "type": "object",
+          "properties": {
+            "connectionLimit": { "type": "number" },
+            "host": { "type": "string" }
+          }
         }
       },
       "required": ["login"]
