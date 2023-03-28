@@ -6,7 +6,7 @@ export const tags = new Table(
   [
     {
       name: "tagId",
-      type: "TINYINT",
+      type: "TINYINT UNSIGNED",
       notNull: true
     },
     {
@@ -23,7 +23,7 @@ export const tagDefinitions = new Table(
   [
     {
       name: "tagId",
-      type: "TINYINT",
+      type: "TINYINT UNSIGNED",
       notNull: true
     },
     {

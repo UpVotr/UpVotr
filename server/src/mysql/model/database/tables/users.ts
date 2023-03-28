@@ -18,7 +18,7 @@ export const users = new Table(
     },
     {
       name: "authProvider",
-      type: "TINYINT",
+      type: "TINYINT UNSIGNED",
       notNull: true
     },
     {

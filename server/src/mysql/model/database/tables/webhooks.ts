@@ -4,7 +4,7 @@ import { getTableName, tables } from "../tables";
 export const webhooks = new Table(getTableName(tables.webhooks), [
   {
     name: "trigger",
-    type: "TINYINT",
+    type: "TINYINT UNSIGNED",
     notNull: true
   },
   {

@@ -11,7 +11,7 @@ export const roles = new Table(
     },
     {
       name: "roleId",
-      type: "TINYINT",
+      type: "TINYINT UNSIGNED",
       notNull: true
     }
   ] as const,
@@ -23,7 +23,7 @@ export const roleDefinitions = new Table(
   [
     {
       name: "roleId",
-      type: "TINYINT",
+      type: "TINYINT UNSIGNED",
       notNull: true
     },
     {
@@ -33,10 +33,10 @@ export const roleDefinitions = new Table(
     },
     {
       name: "permissionFlags",
-      type: "TINYINT",
+      type: "TINYINT UNSIGNED",
       notNull: true,
       default: "0",
-      raw: "`permissionFlags` TINYINT(8) ZEROFILL NOT NULL DEFAULT 0"
+      raw: "`permissionFlags` TINYINT UNSIGNED(8) ZEROFILL NOT NULL DEFAULT 0"
     }
   ] as const,
   "PRIMARY KEY (`roleId`)"

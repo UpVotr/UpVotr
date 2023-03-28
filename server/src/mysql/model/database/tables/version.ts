@@ -18,19 +18,19 @@ export const version = new Table(
     },
     {
       name: "major",
-      type: "TINYINT",
+      type: "TINYINT UNSIGNED",
       notNull: true,
       default: "0"
     },
     {
       name: "minor",
-      type: "TINYINT",
+      type: "TINYINT UNSIGNED",
       notNull: true,
       default: "0"
     },
     {
       name: "bugFix",
-      type: "TINYINT",
+      type: "TINYINT UNSIGNED",
       notNull: true,
       default: "0"
     }

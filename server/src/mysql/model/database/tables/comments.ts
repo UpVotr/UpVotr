@@ -6,12 +6,12 @@ export const comments = new Table(
   [
     {
       name: "postId",
-      type: "BIGINT",
+      type: "BIGINT UNSIGNED",
       notNull: true
     },
     {
       name: "commentId",
-      type: "MEDIUMINT",
+      type: "MEDIUMINT UNSIGNED",
       notNull: true
     },
     {
@@ -26,7 +26,7 @@ export const comments = new Table(
     },
     {
       name: "repliesTo",
-      type: "MEDIUMINT"
+      type: "MEDIUMINT UNSIGNED"
     },
     {
       name: "lastEdit",

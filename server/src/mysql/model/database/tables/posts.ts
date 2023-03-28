@@ -31,17 +31,17 @@ export const posts = new Table(
     },
     {
       name: "postId",
-      type: "BIGINT",
+      type: "BIGINT UNSIGNED",
       notNull: true,
       raw: "`postId` BIGINT UNSIGNED AUTO_INCREMENT"
     },
     {
       name: "resolvedBy",
-      type: "MEDIUMINT"
+      type: "MEDIUMINT UNSIGNED"
     },
     {
       name: "status",
-      type: "TINYINT",
+      type: "TINYINT UNSIGNED",
       notNull: true,
       default: "0"
     }
