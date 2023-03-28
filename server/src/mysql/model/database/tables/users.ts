@@ -42,6 +42,18 @@ export const users = new Table(
       name: "avatarURL",
       type: "TEXT",
       default: '"/assets/default_avatar.png"'
+    },
+    {
+      name: "invisible",
+      type: "BOOLEAN",
+      notNull: true,
+      default: "FALSE"
+    },
+    {
+      name: "lastOnline",
+      type: "TIMESTAMP",
+      notNull: true,
+      default: "CURRENT_TIMESTAMP"
     }
   ] as const,
   "PRIMARY KEY(`userId`)"
