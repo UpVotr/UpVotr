@@ -1,11 +1,7 @@
 import { UpVotrConfig } from "./config";
 import fs from "fs";
-
-type DeepRequired<T> = T extends object
-  ? {
-      [k in keyof Required<T>]: DeepRequired<T[k]>;
-    }
-  : T;
+import { DeepRequired } from "./util/deepRequired";
+import deepDefault from "./util/deepDefault";
 
 const defaultConfig: DeepRequired<UpVotrConfig> = {
   server: {
@@ -84,7 +80,4 @@ class DeepDefault<T extends Record<string | symbol, any>>
   }
 }
 
-export const config = new Proxy<UpVotrConfig>(
-  fileConfig,
-  new DeepDefault(defaultConfig)
-) as Required<UpVotrConfig>;
+export const config = deepDefault<UpVotrConfig>(defaultConfig, fileConfig);
