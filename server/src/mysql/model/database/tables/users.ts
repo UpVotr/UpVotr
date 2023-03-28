@@ -6,9 +6,9 @@ export const users = new Table(
   [
     {
       name: "userId",
-      type: "CHAR(36)",
+      type: "VARCHAR(36)",
       notNull: true,
-      raw: "`userId` CHAR(36) CHARACTER SET utf8mb3 NOT NULL"
+      raw: "`userId` VARCHAR(36) CHARACTER SET utf8mb3 NOT NULL"
     },
     {
       name: "authProvider",
@@ -23,7 +23,7 @@ export const users = new Table(
     },
     {
       name: "displayName",
-      type: "CHAR(100)",
+      type: "VARCHAR(100)",
       notNull: true
     },
     {

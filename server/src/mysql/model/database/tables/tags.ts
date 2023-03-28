@@ -28,15 +28,15 @@ export const tagDefinitions = new Table(
     },
     {
       name: "backgroundColor",
-      type: "CHAR(8)"
+      type: "VARCHAR(8)"
     },
     {
       name: "textColor",
-      type: "CHAR(8)"
+      type: "VARCHAR(8)"
     },
     {
       name: "displayName",
-      type: "CHAR(100)",
+      type: "VARCHAR(100)",
       notNull: true
     }
   ] as const,

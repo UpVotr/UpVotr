@@ -6,9 +6,9 @@ export const roles = new Table(
   [
     {
       name: "userId",
-      type: "CHAR(36)",
+      type: "VARCHAR(36)",
       notNull: true,
-      raw: "`userId` CHAR(36) CHARACTER SET utf8mb3 NOT NULL"
+      raw: "`userId` VARCHAR(36) CHARACTER SET utf8mb3 NOT NULL"
     },
     {
       name: "roleId",
@@ -29,7 +29,7 @@ export const roleDefinitions = new Table(
     },
     {
       name: "roleName",
-      type: "CHAR(100)",
+      type: "VARCHAR(100)",
       notNull: true
     },
     {

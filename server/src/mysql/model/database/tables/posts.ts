@@ -6,7 +6,7 @@ export const posts = new Table(
   [
     {
       name: "title",
-      type: "CHAR(100)",
+      type: "VARCHAR(100)",
       notNull: true
     },
     {
@@ -22,9 +22,9 @@ export const posts = new Table(
     },
     {
       name: "authorId",
-      type: "CHAR(36)",
+      type: "VARCHAR(36)",
       notNull: true,
-      raw: "`authorId` CHAR(36) CHARACTER SET utf8mb3 NOT NULL"
+      raw: "`authorId` VARCHAR(36) CHARACTER SET utf8mb3 NOT NULL"
     },
     {
       name: "lastEdit",
@@ -49,3 +49,10 @@ export const posts = new Table(
   ] as const,
   "PRIMARY KEY (`postId`)"
 );
+
+export const postOnUpdateTrigger = `CREATE TRIGGER IF NOT EXISTS \`post_update\`
+BEFORE UPDATE ON ${posts.aliasedName()}
+FOR EACH ROW
+BEGIN
+  SET NEW.lastEdit = CURRENT_TIMESTAMP;
+END`;

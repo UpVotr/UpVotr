@@ -11,13 +11,13 @@ export const sessions = new Table(
     },
     {
       name: "userId",
-      type: "CHAR(36)",
+      type: "VARCHAR(36)",
       notNull: true,
-      raw: "`userId` CHAR(36) CHARACTER SET utf8mb3 NOT NULL"
+      raw: "`userId` VARCHAR(36) CHARACTER SET utf8mb3 NOT NULL"
     },
     {
       name: "sessionId",
-      type: "CHAR(32)",
+      type: "VARCHAR(32)",
       notNull: true
     },
     {
@@ -28,3 +28,10 @@ export const sessions = new Table(
   ] as const,
   "PRIMARY KEY(`sid`)"
 );
+
+export const sessionsRemoveExpiredEvent = `CREATE EVENT IF NOT EXISTS
+    \`sessions_clear_expired\`
+  ON SCHEDULE EVERY 1 HOUR
+  DO
+    DELETE FROM ${sessions.aliasedName()}
+    WHERE ${sessions.column("expires")} < CURRENT_TIMESTAMP`;
