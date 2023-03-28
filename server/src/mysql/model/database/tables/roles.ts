@@ -6,9 +6,8 @@ export const roles = new Table(
   [
     {
       name: "userId",
-      type: "VARCHAR(36)",
-      notNull: true,
-      raw: "`userId` VARCHAR(36) CHARACTER SET utf8mb3 NOT NULL"
+      type: "BINARY(16)" as "BINARY",
+      notNull: true
     },
     {
       name: "roleId",

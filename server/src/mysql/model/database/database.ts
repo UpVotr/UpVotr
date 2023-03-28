@@ -1,11 +1,17 @@
 import { Database } from "@upvotr/mysql-query-builder";
 import { config } from "../../../liveConfig";
-import { commentAutoIncrementTrigger, comments } from "./tables/comments";
-import { posts } from "./tables/posts";
+import {
+  commentAutoIncrementTrigger,
+  commentOnUpdateTrigger,
+  comments
+} from "./tables/comments";
+import { postOnUpdateTrigger, posts } from "./tables/posts";
 import { roleDefinitions, roles } from "./tables/roles";
-import { sessions } from "./tables/sessions";
+import { sessionsRemoveExpiredEvent, sessions } from "./tables/sessions";
 import { tagDefinitions, tags } from "./tables/tags";
-import { users } from "./tables/users";
+import { binaryUUIDFunction, users } from "./tables/users";
+import { webhooks } from "./tables/webhooks";
+import { initVersion } from "./tables/version";
 
 const tables = [
   comments,
@@ -15,7 +21,8 @@ const tables = [
   sessions,
   tags,
   tagDefinitions,
-  users
+  users,
+  webhooks
 ];
 
 export const database = new Database(config.mysql.database.name, tables);
@@ -23,4 +30,9 @@ export const database = new Database(config.mysql.database.name, tables);
 export const configureDatabase = `${database.create(true)};
 ${database.use()};
 ${database.ensureTables(tables.map((table) => table.rawName())).join(";\n")};
-${commentAutoIncrementTrigger};`;
+${commentAutoIncrementTrigger};
+${commentOnUpdateTrigger};
+${postOnUpdateTrigger};
+${sessionsRemoveExpiredEvent};
+${initVersion};
+${binaryUUIDFunction};`;
