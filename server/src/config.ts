@@ -58,6 +58,13 @@ export interface UpVotrConfig {
     };
     [k: string]: unknown;
   };
+  /**
+   * Posting settings
+   */
+  posts?: {
+    publicByDefault?: boolean;
+    [k: string]: unknown;
+  };
 }
 /**
  * Server hostname and port
