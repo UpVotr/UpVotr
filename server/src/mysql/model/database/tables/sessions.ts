@@ -6,8 +6,9 @@ export const sessions = new Table(
   [
     {
       name: "userId",
-      type: "BINARY(16)" as "BINARY",
-      notNull: true
+      type: "VARCHAR(36)",
+      notNull: true,
+      raw: "`userId` VARCHAR(36) CHARACTER SET utf8mb3"
     },
     {
       name: "sessionId",
