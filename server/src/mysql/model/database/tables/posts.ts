@@ -32,6 +32,11 @@ export const posts = new Table(
       type: "TIMESTAMP"
     },
     {
+      name: "editedBy",
+      type: "VARCHAR(36)",
+      raw: "`editedBy` VARCHAR(36) CHARACTER SET utf8mb3"
+    },
+    {
       name: "postId",
       type: "BIGINT UNSIGNED",
       notNull: true,
@@ -52,6 +57,17 @@ export const posts = new Table(
       type: "BOOLEAN",
       notNull: true,
       default: config.posts.publicByDefault ? "TRUE" : "FALSE"
+    },
+    {
+      name: "deleted",
+      type: "BOOLEAN",
+      notNull: true,
+      default: "FALSE"
+    },
+    {
+      name: "deletedBy",
+      type: "VARCHAR(36)",
+      raw: "`deletedBy` VARCHAR(36) CHARACTER SET utf8mb3"
     }
   ] as const,
   "PRIMARY KEY (`postId`)"

@@ -9,7 +9,7 @@ import { postOnUpdateTrigger, posts } from "./tables/posts";
 import { roleDefinitions, roles } from "./tables/roles";
 import { sessionsRemoveExpiredEvent, sessions } from "./tables/sessions";
 import { tagDefinitions, tags } from "./tables/tags";
-import { binaryUUIDFunction, users } from "./tables/users";
+import { users } from "./tables/users";
 import { webhooks } from "./tables/webhooks";
 import { initVersion } from "./tables/version";
 
@@ -34,5 +34,4 @@ ${commentAutoIncrementTrigger};
 ${commentOnUpdateTrigger};
 ${postOnUpdateTrigger};
 ${sessionsRemoveExpiredEvent};
-${initVersion};
-${binaryUUIDFunction};`;
+${initVersion};`;
