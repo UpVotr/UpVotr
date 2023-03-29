@@ -28,5 +28,5 @@ export const sessionsRemoveExpiredEvent = `CREATE EVENT IF NOT EXISTS
     \`sessions_clear_expired\`
   ON SCHEDULE EVERY 1 HOUR
   DO
-    DELETE FROM ${sessions.aliasedName()}
+    DELETE FROM ${sessions}
     WHERE ${sessions.column("expires")} < CURRENT_TIMESTAMP`;

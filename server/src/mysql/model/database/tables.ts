@@ -10,7 +10,9 @@ export const tables = keymirror([
   "roleDefinitions",
   "tags",
   "tagDefinitions",
-  "comments"
+  "comments",
+  "webhooks",
+  "version"
 ]);
 
 const tableNames = deepDefault(tables, config.mysql.database.tableMap);

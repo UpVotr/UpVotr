@@ -1,5 +1,6 @@
 import { Table } from "@upvotr/mysql-query-builder";
 import { getTableName, tables } from "../tables";
+import { config } from "../../../../liveConfig";
 
 export const posts = new Table(
   getTableName(tables.posts),
@@ -45,13 +46,19 @@ export const posts = new Table(
       type: "TINYINT UNSIGNED",
       notNull: true,
       default: "0"
+    },
+    {
+      name: "public",
+      type: "BOOLEAN",
+      notNull: true,
+      default: config.posts.publicByDefault ? "TRUE" : "FALSE"
     }
   ] as const,
   "PRIMARY KEY (`postId`)"
 );
 
 export const postOnUpdateTrigger = `CREATE TRIGGER IF NOT EXISTS \`post_update\`
-BEFORE UPDATE ON ${posts.aliasedName()}
+BEFORE UPDATE ON ${posts}
 FOR EACH ROW
 BEGIN
   SET NEW.lastEdit = CURRENT_TIMESTAMP;

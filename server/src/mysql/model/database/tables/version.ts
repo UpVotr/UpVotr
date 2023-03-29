@@ -38,4 +38,4 @@ export const version = new Table(
   "PRIMARY KEY (`key`)"
 );
 
-export const initVersion = `INSERT IGNORE INTO ${version.aliasedName()}() VALUES()`;
+export const initVersion = `INSERT IGNORE INTO ${version}() VALUES()`;
