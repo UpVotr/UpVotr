@@ -74,7 +74,7 @@ export const commentOnUpdateTrigger = `CREATE TRIGGER IF NOT EXISTS \`comment_up
 BEFORE UPDATE ON ${comments}
 FOR EACH ROW
 BEGIN
-  IF NEW.deleted = TRUE AND OLD.deleted = FALSE THEN
+  IF NEW.\`deleted\` <=> Old.\`deleted\` THEN
     SET NEW.content = "";
   END IF;
   SET NEW.lastEdit = CURRENT_TIMESTAMP;
