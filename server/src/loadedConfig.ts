@@ -36,22 +36,6 @@ const fileConfig: UpVotrConfig = JSON.parse(
   fs.readFileSync("./upvotr.config.json", "utf-8")
 );
 
-let updateTimeout: NodeJS.Timeout;
-fs.watch("./upvotr.config.json", "utf-8", (e) => {
-  if (e === "change") {
-    clearTimeout(updateTimeout);
-    setTimeout(() => {
-      fs.readFile("./upvotr.config.json", "utf-8", (err, data) => {
-        if (err) throw err;
-        for (const key in fileConfig) {
-          delete (fileConfig as any)[key];
-        }
-        Object.assign(fileConfig, JSON.parse(data));
-      });
-    }, 100);
-  }
-});
-
 class DeepDefault<T extends Record<string | symbol, any>>
   implements ProxyHandler<T>
 {
