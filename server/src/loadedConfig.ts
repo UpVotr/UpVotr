@@ -55,35 +55,18 @@ fs.watch("./upvotr.config.json", "utf-8", (e) => {
 class DeepDefault<T extends Record<string | symbol, any>>
   implements ProxyHandler<T>
 {
-  constructor(private defaultObject: T, private path: string = "") {}
+  constructor(private defaultObject: T) {}
 
   get(target: T, p: string | symbol, receiver: any): any {
     if (p in target) {
       return typeof target[p] === "object"
-        ? new Proxy(
-            target[p],
-            new DeepDefault(
-              this.defaultObject[p],
-              `${this.path}.${p.toString()}`
-            )
-          )
+        ? new Proxy(target[p], new DeepDefault(this.defaultObject[p]))
         : target[p];
     }
 
     return typeof this.defaultObject[p] === "object"
-      ? new Proxy(
-          this.defaultObject[p],
-          new DeepDefault(this.defaultObject[p], `${this.path}.${p.toString()}`)
-        )
+      ? new Proxy(this.defaultObject[p], new DeepDefault(this.defaultObject[p]))
       : this.defaultObject[p];
-  }
-
-  set(target: T, p: string | symbol, newValue: any, receiver: any): boolean {
-    const set = Reflect.set(target, p, newValue, receiver);
-    if (this.path === "") {
-      fs.writeFile("./upvotr.config.json", JSON.stringify(target), () => {});
-    }
-    return set;
   }
 }
 

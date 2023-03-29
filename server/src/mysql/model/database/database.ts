@@ -1,5 +1,5 @@
 import { Database } from "@upvotr/mysql-query-builder";
-import { config } from "../../../liveConfig";
+import { config } from "../../../loadedConfig";
 import {
   commentAutoIncrementTrigger,
   commentOnUpdateTrigger,

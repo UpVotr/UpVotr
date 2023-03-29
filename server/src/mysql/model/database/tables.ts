@@ -1,4 +1,4 @@
-import { config } from "../../../liveConfig";
+import { config } from "../../../loadedConfig";
 import deepDefault from "../../../util/deepDefault";
 import keymirror from "../../../util/keymirror";
 

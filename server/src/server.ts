@@ -3,7 +3,7 @@ import express from "express";
 import next from "next";
 import type { NextServer } from "next/dist/server/next";
 import { ContentWatcher } from "./dev/contentWatcher";
-import { config } from "./liveConfig";
+import { config } from "./loadedConfig";
 import chalk from "chalk";
 
 const serverModule: HotModule<
