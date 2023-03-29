@@ -36,22 +36,4 @@ const fileConfig: UpVotrConfig = JSON.parse(
   fs.readFileSync("./upvotr.config.json", "utf-8")
 );
 
-class DeepDefault<T extends Record<string | symbol, any>>
-  implements ProxyHandler<T>
-{
-  constructor(private defaultObject: T) {}
-
-  get(target: T, p: string | symbol, receiver: any): any {
-    if (p in target) {
-      return typeof target[p] === "object"
-        ? new Proxy(target[p], new DeepDefault(this.defaultObject[p]))
-        : target[p];
-    }
-
-    return typeof this.defaultObject[p] === "object"
-      ? new Proxy(this.defaultObject[p], new DeepDefault(this.defaultObject[p]))
-      : this.defaultObject[p];
-  }
-}
-
 export const config = deepDefault<UpVotrConfig>(defaultConfig, fileConfig);
