@@ -20,7 +20,8 @@
       }
     ],
     "paths": {
-      "@upvotr/*": ["./src/*"]
+      "@upvotr/*": ["./src/*"],
+      "@query/*": ["./query/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
