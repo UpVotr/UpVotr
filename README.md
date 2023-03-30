@@ -56,7 +56,7 @@ Before you start the server, we need to do some configuration of the MySQL serve
           "host": "<database host>"
         },
         "database": {
-          "name": "upvotr"
+          "name": "<database name>"
         },
       }
     }
