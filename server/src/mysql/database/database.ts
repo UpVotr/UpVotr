@@ -14,7 +14,7 @@ import { webhooks } from "./tables/webhooks";
 import { initVersion, version } from "./tables/version";
 import { notifications } from "./tables/notifications";
 
-const tables = [
+export const tables = [
   comments,
   posts,
   roles,
@@ -30,11 +30,19 @@ const tables = [
 
 export const database = new Database(config.mysql.database.name, tables);
 
-export const configureDatabase = `${database.create(true)};
+export const setupDatabase = `${database.create(true)};
 ${database.use()};
-${database.ensureTables(tables.map((table) => table.rawName())).join(";\n")};
+${version.create(true)};
+${initVersion};`;
+
+export const autoconfigureDatabase = `${database
+  .ensureTables(
+    tables
+      .map((table) => table.rawName())
+      .filter((table) => table !== version.rawName())
+  )
+  .join(";\n")};
 ${commentAutoIncrementTrigger};
 ${commentOnUpdateTrigger};
 ${postOnUpdateTrigger};
-${sessionsRemoveExpiredEvent};
-${initVersion};`;
+${sessionsRemoveExpiredEvent};`;

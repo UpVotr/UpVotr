@@ -5,10 +5,24 @@ import {
   createPool
 } from "mysql2/promise";
 import { config } from "../loadedConfig";
-import { configureDatabase, database } from "./database/database";
+import { setupDatabase, database } from "./database/database";
 import createDebug from "debug";
+import { handleMigrate } from "./migrate/handleMigrate";
+import { Version, VersionRow, getVersion } from "./query/version";
+import { readFileSync } from "fs";
 
 const debug = createDebug("upvotr:database");
+
+const currentVersion: Version = (([major, minor, bugFix]) => ({
+  major,
+  minor,
+  bugFix,
+  key: "version"
+}))(
+  JSON.parse(readFileSync(require.resolve("../../../package.json"), "utf-8"))
+    .version.split(".")
+    .map(Number)
+);
 
 const db = createPool({
   host: config.mysql.connection.host,
@@ -23,7 +37,13 @@ export async function initDatabase() {
     if (config.mysql.autoconfigure) {
       try {
         debug("Attempting to automatically configure database...");
-        await db.query(configureDatabase);
+        await db.query(setupDatabase);
+        await handleMigrate(
+          (
+            await query<VersionRow[]>(...getVersion())
+          ).result[0],
+          currentVersion
+        );
       } catch (e) {
         debug("Failed to enter database...");
         console.error("Failed to automatically configure database.");
