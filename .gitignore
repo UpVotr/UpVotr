@@ -106,3 +106,5 @@ dist
 upvotr.config.json
 
 *.afdesign
+
+package-lock.json
