@@ -13,7 +13,7 @@ import { users } from "./tables/users";
 import { webhooks } from "./tables/webhooks";
 import { initVersion, version } from "./tables/version";
 import { notifications } from "./tables/notifications";
-import { initSettings } from "./tables/settings";
+import { initSettings, settings } from "./tables/settings";
 
 export const tables = [
   comments,
