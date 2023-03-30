@@ -1,6 +1,5 @@
 import { Table } from "@upvotr/mysql-query-builder";
 import { getTableName, tables } from "../tables";
-import { config } from "../../../loadedConfig";
 
 export const posts = new Table(
   getTableName(tables.posts),
@@ -55,8 +54,7 @@ export const posts = new Table(
     {
       name: "public",
       type: "BOOLEAN",
-      notNull: true,
-      default: config.posts.publicByDefault ? "TRUE" : "FALSE"
+      notNull: true
     },
     {
       name: "deleted",

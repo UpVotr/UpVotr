@@ -70,13 +70,6 @@
         }
       },
       "required": ["login"]
-    },
-    "posts": {
-      "description": "Posting settings",
-      "type": "object",
-      "properties": {
-        "publicByDefault": { "type": "boolean", "default": true }
-      }
     }
   },
   "definitions": {
