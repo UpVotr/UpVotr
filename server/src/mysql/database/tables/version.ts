@@ -1,20 +1,14 @@
 import { Table } from "@upvotr/mysql-query-builder";
 import { getTableName, tables } from "../tables";
 
-const upvotrVersion = {
-  major: 0,
-  minor: 1,
-  bugFix: 0
-};
-
 export const version = new Table(
   getTableName(tables.version),
   [
     {
       name: "key",
-      type: "BOOLEAN",
+      type: "ENUM('version')",
       notNull: true,
-      default: "FALSE"
+      default: "'version'"
     },
     {
       name: "major",
