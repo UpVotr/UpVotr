@@ -7,7 +7,7 @@
   "properties": {
     "server": {
       "description": "Production and development server configuration",
-      "anyOf": [
+      "oneOf": [
         {
           "$ref": "#/definitions/server_config"
         },
@@ -24,8 +24,7 @@
           "required": ["production", "development"],
           "additionalProperties": false
         }
-      ],
-      "additionalProperties": false
+      ]
     },
     "mysql": {
       "description": "Configuration for the MySQL connection",
