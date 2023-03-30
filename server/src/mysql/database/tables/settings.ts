@@ -32,4 +32,4 @@ export const settings = new Table(
   "PRIMARY KEY(`key`)"
 );
 
-export const initSettings = `INSERT INTO ${settings}() VALUES()`;
+export const initSettings = `INSERT IGNORE INTO ${settings}() VALUES()`;
