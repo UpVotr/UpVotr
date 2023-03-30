@@ -28,7 +28,7 @@ Before you start the server, we need to do some configuration of the MySQL serve
 
 - Create a new user for the server to connect to the database with:
   - Connect to the MySQL database as root or the user that you plan to use for configuration.
-  - Determine the `username` and `password` for the connection and the `database name` and `host` and `port` of the website.
+  - Determine the `username`, `password`, and `database host` (for remote database connections, defaults to `127.0.0.`) for the connection and the `database name` and `host` and `port` of the website.
   - Run the following commands, replacing each `<field>` with the appropriate value:
     ```sql
     CREATE USER '<username>'@'<host>' IDENTIFIED BY '<password>';
@@ -51,7 +51,13 @@ Before you start the server, we need to do some configuration of the MySQL serve
         "login": {
           "user": "<username>",
           "password": "<password>"
-        }
+        },
+        "connection": {
+          "host": "<database host>"
+        },
+        "database": {
+          "name": "upvotr"
+        },
       }
     }
     ```
