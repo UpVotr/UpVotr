@@ -1,5 +1,5 @@
 import { Table } from "@upvotr/mysql-query-builder";
-import { webhooks } from "../server/src/mysql/database/tables/webhooks";
+import { webhooks } from "..//database/tables/webhooks";
 import { RowDataPacket } from "mysql2";
 import { QueryGenerator } from "./queryGenerator";
 

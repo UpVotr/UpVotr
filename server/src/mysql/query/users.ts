@@ -1,5 +1,5 @@
 import { Table } from "@upvotr/mysql-query-builder";
-import { users } from "../server/src/mysql/database/tables/users";
+import { users } from "..//database/tables/users";
 import { QueryGenerator } from "./queryGenerator";
 import { RowDataPacket } from "mysql2";
 

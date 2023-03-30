@@ -1,5 +1,5 @@
 import { Table } from "@upvotr/mysql-query-builder";
-import { notifications } from "../server/src/mysql/database/tables/notifications";
+import { notifications } from "../database/tables/notifications";
 import { RowDataPacket } from "mysql2";
 import { QueryGenerator } from "./queryGenerator";
 
