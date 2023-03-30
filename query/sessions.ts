@@ -1,5 +1,5 @@
 import { Table } from "@upvotr/mysql-query-builder";
-import { sessions } from "../server/src/mysql/model/database/tables/sessions";
+import { sessions } from "../server/src/mysql/database/tables/sessions";
 import { RowDataPacket } from "mysql2";
 import { QueryGenerator } from "./queryGenerator";
 

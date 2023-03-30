@@ -5,7 +5,7 @@ import {
   createPool
 } from "mysql2/promise";
 import { config } from "../loadedConfig";
-import { configureDatabase, database } from "./model/database/database";
+import { configureDatabase, database } from "./database/database";
 import createDebug from "debug";
 
 const debug = createDebug("upvotr:database");

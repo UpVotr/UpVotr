@@ -1,5 +1,5 @@
 import { Table } from "@upvotr/mysql-query-builder";
-import { comments } from "../server/src/mysql/model/database/tables/comments";
+import { comments } from "../server/src/mysql/database/tables/comments";
 import { RowDataPacket } from "mysql2";
 import { QueryGenerator } from "./queryGenerator";
 
