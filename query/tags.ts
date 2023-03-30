@@ -1,5 +1,8 @@
 import { Table } from "@upvotr/mysql-query-builder";
-import { tagDefinitions, tags } from "../database/tables/tags";
+import {
+  tagDefinitions,
+  tags
+} from "../server/src/mysql/model/database/tables/tags";
 import { RowDataPacket } from "mysql2";
 import { QueryGenerator } from "./queryGenerator";
 

@@ -1,5 +1,8 @@
 import { Table } from "@upvotr/mysql-query-builder";
-import { roleDefinitions, roles } from "../database/tables/roles";
+import {
+  roleDefinitions,
+  roles
+} from "../server/src/mysql/model/database/tables/roles";
 import { RowDataPacket } from "mysql2";
 import { QueryGenerator } from "./queryGenerator";
 
