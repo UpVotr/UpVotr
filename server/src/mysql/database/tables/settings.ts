@@ -14,13 +14,13 @@ export const settings = new Table(
       name: "appTitle",
       type: "VARCHAR(150)",
       notNull: true,
-      default: "UpVotr Feedback"
+      default: "'UpVotr Feedback'"
     },
     {
       name: "accentColor",
       type: "CHAR(6)",
       notNull: true,
-      default: "DB2777"
+      default: "'DB2777'"
     },
     {
       name: "postsPublicByDefault",
