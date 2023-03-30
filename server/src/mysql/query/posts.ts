@@ -1,5 +1,5 @@
 import { Table } from "@upvotr/mysql-query-builder";
-import { posts } from "..//database/tables/posts";
+import { posts } from "../database/tables/posts";
 import { RowDataPacket } from "mysql2";
 import { QueryGenerator } from "./queryGenerator";
 
