@@ -1,5 +1,5 @@
 import { Database } from "@upvotr/mysql-query-builder";
-import { config } from "../../../loadedConfig";
+import { config } from "../../loadedConfig";
 import {
   commentAutoIncrementTrigger,
   commentOnUpdateTrigger,
@@ -12,6 +12,7 @@ import { tagDefinitions, tags } from "./tables/tags";
 import { users } from "./tables/users";
 import { webhooks } from "./tables/webhooks";
 import { initVersion } from "./tables/version";
+import { notifications } from "./tables/notifications";
 
 const tables = [
   comments,
@@ -22,7 +23,8 @@ const tables = [
   tags,
   tagDefinitions,
   users,
-  webhooks
+  webhooks,
+  notifications
 ];
 
 export const database = new Database(config.mysql.database.name, tables);

@@ -1,6 +1,6 @@
-import { config } from "../../../loadedConfig";
-import deepDefault from "../../../util/deepDefault";
-import keymirror from "../../../util/keymirror";
+import { config } from "../../loadedConfig";
+import deepDefault from "../../util/deepDefault";
+import keymirror from "../../util/keymirror";
 
 export const tables = keymirror([
   "posts",
@@ -12,7 +12,8 @@ export const tables = keymirror([
   "tagDefinitions",
   "comments",
   "webhooks",
-  "version"
+  "version",
+  "notifications"
 ]);
 
 const tableNames = deepDefault(tables, config.mysql.database.tableMap);
