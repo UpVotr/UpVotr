@@ -28,12 +28,12 @@ const defaultConfig: DeepRequired<UpVotrConfig> = {
   }
 };
 
-if (!fs.existsSync("./upvotr.config.json")) {
-  fs.writeFileSync("./upvotr.config.json", "{}");
+if (!fs.existsSync(require.resolve("../../upvotr.config.json"))) {
+  fs.writeFileSync(require.resolve("../../upvotr.config.json"), "{}");
 }
 
 const fileConfig: UpVotrConfig = JSON.parse(
-  fs.readFileSync("./upvotr.config.json", "utf-8")
+  fs.readFileSync(require.resolve("../../upvotr.config.json"), "utf-8")
 );
 
 export const config = deepDefault<UpVotrConfig>(defaultConfig, fileConfig);
