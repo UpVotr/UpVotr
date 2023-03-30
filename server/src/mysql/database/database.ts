@@ -26,6 +26,7 @@ export const tables = [
   users,
   webhooks,
   notifications,
+  settings,
   version
 ];
 
