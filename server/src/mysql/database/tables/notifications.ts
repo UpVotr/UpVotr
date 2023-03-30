@@ -58,5 +58,5 @@ export const notifications = new Table(
       type: "VARCHAR(300)"
     }
   ] as const,
-  "PRIMARY KEY `notificationId`"
+  "PRIMARY KEY (`notificationId`)"
 );

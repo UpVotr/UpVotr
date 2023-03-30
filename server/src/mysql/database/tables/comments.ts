@@ -23,7 +23,7 @@ export const comments = new Table(
     {
       name: "content",
       type: "TEXT",
-      default: '""'
+      notNull: true
     },
     {
       name: "repliesTo",

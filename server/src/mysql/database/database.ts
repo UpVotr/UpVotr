@@ -11,7 +11,7 @@ import { sessionsRemoveExpiredEvent, sessions } from "./tables/sessions";
 import { tagDefinitions, tags } from "./tables/tags";
 import { users } from "./tables/users";
 import { webhooks } from "./tables/webhooks";
-import { initVersion } from "./tables/version";
+import { initVersion, version } from "./tables/version";
 import { notifications } from "./tables/notifications";
 
 const tables = [
@@ -24,7 +24,8 @@ const tables = [
   tagDefinitions,
   users,
   webhooks,
-  notifications
+  notifications,
+  version
 ];
 
 export const database = new Database(config.mysql.database.name, tables);

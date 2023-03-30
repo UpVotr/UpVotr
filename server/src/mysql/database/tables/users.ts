@@ -34,7 +34,7 @@ export const users = new Table(
     },
     {
       name: "avatarURL",
-      type: "TEXT",
+      type: "VARCHAR(500)",
       default: '"/assets/default_avatar.png"'
     },
     {
@@ -48,13 +48,7 @@ export const users = new Table(
       type: "TIMESTAMP",
       notNull: true,
       default: "CURRENT_TIMESTAMP"
-    },
-    {
-      name: "online",
-      type: "BOOLEAN",
-      notNull: true,
-      raw: "`online` BOOLEAN GENERATED ALWAYS AS (`lastOnline` < DATE_SUB(NOW(), INTERVAL 5 MINUTE) AND `invisible` = FALSE)"
     }
   ] as const,
-  "PRIMARY KEY(`userId`)"
+  "PRIMARY KEY(`tag`, `userId`)"
 );

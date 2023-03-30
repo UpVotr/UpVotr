@@ -1,6 +1,6 @@
 import { Table } from "@upvotr/mysql-query-builder";
 import { getTableName, tables } from "../tables";
-import { config } from "../../../../loadedConfig";
+import { config } from "../../../loadedConfig";
 
 export const posts = new Table(
   getTableName(tables.posts),

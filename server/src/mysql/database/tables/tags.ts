@@ -24,7 +24,8 @@ export const tagDefinitions = new Table(
     {
       name: "tagId",
       type: "TINYINT UNSIGNED",
-      notNull: true
+      notNull: true,
+      raw: "`tagId` TINYINT UNSIGNED AUTO_INCREMENT"
     },
     {
       name: "backgroundColor",

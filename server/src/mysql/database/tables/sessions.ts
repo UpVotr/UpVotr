@@ -21,7 +21,7 @@ export const sessions = new Table(
       notNull: true
     }
   ] as const,
-  "PRIMARY KEY(`sid`)"
+  "PRIMARY KEY(`sessionId`)"
 );
 
 export const sessionsRemoveExpiredEvent = `CREATE EVENT IF NOT EXISTS

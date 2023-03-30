@@ -9,6 +9,7 @@ import { HMRRuntime } from "@upvotr/node-hmr";
 import WatchCompiler from "./dev/watchCompiler";
 import { ContentWatcher } from "./dev/contentWatcher";
 import createDebug from "debug";
+import { initDatabase } from "./mysql/connection";
 
 const dev = process.env.NODE_ENV === "development";
 // We don't need to watch the files in production...
@@ -18,6 +19,8 @@ const runtime = new HMRRuntime(dev && new ContentWatcher(require), require);
 
 const debug = createDebug("upvotr:server");
 
-runtime.import("./server").then(() => {
-  debug("Server initiated");
-});
+initDatabase()
+  .then(() => runtime.import("./server"))
+  .then(() => {
+    debug("Server initiated");
+  });

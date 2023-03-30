@@ -29,6 +29,10 @@ Before you start the server, we need to do some configuration of the MySQL serve
 - Create a new user for the server to connect to the database with:
   - Connect to the MySQL database as root or the user that you plan to use for configuration.
   - Determine the `username`, `password`, and `database host` (for remote database connections, defaults to `127.0.0.`) for the connection and the `database name` and `host` and `port` of the website.
+  - If you are using the `autoconfigure` option (Reccomended), you will also need to run the following command to allow the required triggers to be created:
+    ```sql
+    SET GLOBAL log_bin_trust_function_creators = 1;
+    ```
   - Run the following commands, replacing each `<field>` with the appropriate value:
     ```sql
     CREATE USER '<username>'@'<host>' IDENTIFIED BY '<password>';

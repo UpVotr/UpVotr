@@ -25,7 +25,7 @@ export async function initDatabase() {
         debug("Attempting to automatically configure database...");
         await db.query(configureDatabase);
       } catch (e) {
-        debug("Attempting to enter database...");
+        debug("Failed to enter database...");
         console.error("Failed to automatically configure database.");
         throw e;
       }
