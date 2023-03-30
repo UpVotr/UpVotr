@@ -41,7 +41,7 @@ Before you start the server, we need to do some configuration of the MySQL serve
     Example:
     ```sql
     CREATE USER 'upvotr'@'feedback.upovotr.io' IDENTIFIED BY 'supersecurepassword';
-    GRANT ALL ON `upvotr`.* TO 'upvotr'@'feedback.upvotr.io';
+    GRANT ALL ON `upvotr`.* TO '<username>'@'<host>';
     ```
     > Note: If the MySQL server is running on the same machine, `host` should be `127.0.0.1`
   - Create `upvotr.config.json` in the root folder (next to `tsconfig.json`) with the following content:
