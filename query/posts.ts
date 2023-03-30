@@ -3,7 +3,7 @@ import { posts } from "../server/src/mysql/database/tables/posts";
 import { RowDataPacket } from "mysql2";
 import { QueryGenerator } from "./queryGenerator";
 
-type Post = Table.RowType<typeof posts>;
+export type Post = Table.RowType<typeof posts>;
 
 export type PostRow = Post & RowDataPacket;
 

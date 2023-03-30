@@ -6,11 +6,11 @@ import {
 import { RowDataPacket } from "mysql2";
 import { QueryGenerator } from "./queryGenerator";
 
-type Role = Table.RowType<typeof roles>;
+export type Role = Table.RowType<typeof roles>;
 
 export type RoleRow = Role & RowDataPacket;
 
-type RoleDefinition = Table.RowType<typeof roleDefinitions>;
+export type RoleDefinition = Table.RowType<typeof roleDefinitions>;
 
 export type RoleDefinitionRow = RoleDefinition & RowDataPacket;
 

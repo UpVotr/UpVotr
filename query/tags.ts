@@ -3,11 +3,11 @@ import { tagDefinitions, tags } from "../server/src/mysql/database/tables/tags";
 import { RowDataPacket } from "mysql2";
 import { QueryGenerator } from "./queryGenerator";
 
-type Tag = Table.RowType<typeof tags>;
+export type Tag = Table.RowType<typeof tags>;
 
 export type TagRow = Tag & RowDataPacket;
 
-type TagDefinition = Table.RowType<typeof tagDefinitions>;
+export type TagDefinition = Table.RowType<typeof tagDefinitions>;
 
 export type TagDefinitionRow = TagDefinition & RowDataPacket;
 

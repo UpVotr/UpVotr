@@ -3,7 +3,7 @@ import { version } from "../server/src/mysql/database/tables/version";
 import { RowDataPacket } from "mysql2";
 import { QueryGenerator } from "./queryGenerator";
 
-type Version = Table.RowType<typeof version>;
+export type Version = Table.RowType<typeof version>;
 
 export type VersionRow = Version & RowDataPacket;
 

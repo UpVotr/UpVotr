@@ -3,7 +3,7 @@ import { comments } from "../server/src/mysql/database/tables/comments";
 import { RowDataPacket } from "mysql2";
 import { QueryGenerator } from "./queryGenerator";
 
-type Comment = Table.RowType<typeof comments>;
+export type Comment = Table.RowType<typeof comments>;
 
 export type CommentRow = Comment & RowDataPacket;
 

@@ -3,7 +3,7 @@ import { webhooks } from "../server/src/mysql/database/tables/webhooks";
 import { RowDataPacket } from "mysql2";
 import { QueryGenerator } from "./queryGenerator";
 
-type Webhook = Table.RowType<typeof webhooks>;
+export type Webhook = Table.RowType<typeof webhooks>;
 
 export type WebhookRow = Webhook & RowDataPacket;
 

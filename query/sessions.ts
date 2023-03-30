@@ -3,7 +3,7 @@ import { sessions } from "../server/src/mysql/database/tables/sessions";
 import { RowDataPacket } from "mysql2";
 import { QueryGenerator } from "./queryGenerator";
 
-type Session = Table.RowType<typeof sessions>;
+export type Session = Table.RowType<typeof sessions>;
 
 export type SessionRow = Session & RowDataPacket;
 

@@ -3,7 +3,7 @@ import { users } from "../server/src/mysql/database/tables/users";
 import { QueryGenerator } from "./queryGenerator";
 import { RowDataPacket } from "mysql2";
 
-type UserData = Table.RowType<typeof users>;
+export type UserData = Table.RowType<typeof users>;
 
 export type UserDataRow = UserData & RowDataPacket;
 
