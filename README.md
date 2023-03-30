@@ -1,4 +1,4 @@
-<p align="center"><img src="public/logo_full_small.png" alt="UpVotr Logo Design" height="250" width="608"></p>
+<p align="center"><img src="public/logo_full_small.png" alt="UpVotr Logo Design" width="608"></p>
 
 # UpVotr
 
