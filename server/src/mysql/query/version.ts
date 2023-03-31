@@ -1,22 +1,28 @@
-import { Table } from "@upvotr/mysql-query-builder";
+import { PersistManager, Runner, createModule } from "@upvotr/node-hmr";
 import { version } from "../database/tables/version";
-import { RowDataPacket } from "mysql2";
 import { QueryGenerator } from "./queryGenerator";
 
-export type Version = Table.RowType<typeof version>;
+const versionQueries = createModule(
+  new PersistManager(),
+  new Runner(() => {
+    const getVersion = (() => [
+      /* sql */ `SELECT ${version.column("major")}, ${version.column(
+        "minor"
+      )}, ${version.column("bugFix")} FROM ${version}`,
+      []
+    ]) satisfies QueryGenerator;
 
-export type VersionRow = Version & RowDataPacket;
+    const setVersion = ((major: number, minor: number, bugFix: number) => [
+      /* sql */ `UPDATE ${version} SET ${version.column(
+        "major"
+      )} = ?, ${version.column("minor")} = ?, ${version.column("bugFix")} = ?`,
+      [major, minor, bugFix]
+    ]) satisfies QueryGenerator;
 
-export const getVersion = (() => [
-  `SELECT ${version.column("major")}, ${version.column(
-    "minor"
-  )}, ${version.column("bugFix")} FROM ${version}`,
-  []
-]) satisfies QueryGenerator;
-
-export const setVersion = ((major: number, minor: number, bugFix: number) => [
-  `UPDATE ${version} SET ${version.column("major")} = ?, ${version.column(
-    "minor"
-  )} = ?, ${version.column("bugFix")} = ?`,
-  [major, minor, bugFix]
-]) satisfies QueryGenerator;
+    return {
+      getVersion,
+      setVersion
+    };
+  }),
+  false
+);

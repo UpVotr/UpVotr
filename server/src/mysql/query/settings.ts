@@ -1,28 +1,47 @@
-import { Table } from "@upvotr/mysql-query-builder";
+import { PersistManager, Runner, createModule } from "@upvotr/node-hmr";
 import { settings } from "../database/tables/settings";
-import { RowDataPacket } from "mysql2";
 import { QueryGenerator } from "./queryGenerator";
+import { Settings } from "./types";
 
-export type Settings = Table.RowType<typeof settings>;
-export type SettingsRow = Settings & RowDataPacket;
+const settingsQueries = createModule(
+  new PersistManager(),
+  new Runner(() => {
+    const getSettings = ((
+      columns: Parameters<(typeof settings)["column"]>[0][]
+    ) => [
+      /* sql */ `SELECT ${columns
+        .map((col) => settings.column(col))
+        .join(", ")} FROM ${settings}`,
+      []
+    ]) satisfies QueryGenerator;
 
-export const getSettings = ((
-  columns: Parameters<(typeof settings)["column"]>[0][]
-) => [
-  `SELECT ${columns
-    .map((col) => settings.column(col))
-    .join(", ")} FROM ${settings}`,
-  []
-]) satisfies QueryGenerator;
+    type SettingKey = Parameters<(typeof settings)["column"]>[0];
 
-export const setSettings = (<
-  T extends Parameters<(typeof settings)["column"]>[0]
->(
-  cols: T[],
-  values: Settings[T][]
-) => [
-  `UPDATE ${settings} SET ${cols
-    .map((col) => `${settings.column(col)} = ?`)
-    .join(", ")}`,
-  values
-]) satisfies QueryGenerator;
+    type SettingsType<K extends readonly SettingKey[]> = K extends [
+      infer S extends SettingKey,
+      ...infer Rest extends SettingKey[]
+    ]
+      ? [Settings[S], ...SettingsType<Rest>]
+      : K extends [infer S extends SettingKey]
+      ? Settings[S]
+      : [];
+
+    const setSettings = (<T extends readonly SettingKey[]>(
+      cols: T,
+      values: SettingsType<T>
+    ) => [
+      /* sql */ `UPDATE ${settings} SET ${cols
+        .map((col) => `${settings.column(col)} = ?`)
+        .join(", ")}`,
+      [...values]
+    ]) satisfies QueryGenerator;
+
+    return {
+      getSettings,
+      setSettings
+    };
+  }),
+  false
+);
+
+export = settingsQueries;

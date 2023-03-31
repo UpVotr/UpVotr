@@ -1,35 +1,46 @@
-import { Table } from "@upvotr/mysql-query-builder";
+import { PersistManager, Runner, createModule } from "@upvotr/node-hmr";
 import { webhooks } from "../database/tables/webhooks";
-import { RowDataPacket } from "mysql2";
 import { QueryGenerator } from "./queryGenerator";
 
-export type Webhook = Table.RowType<typeof webhooks>;
+const webhookQueries = createModule(
+  new PersistManager(),
+  new Runner(() => {
+    const addWebhook = ((trigger: number, url: string) => [
+      /* sql */ `INSERT INTO ${webhooks} (${webhooks.column(
+        "trigger"
+      )}, ${webhooks.column("url")}) VALUES(?, ?)`,
+      [trigger, url]
+    ]) satisfies QueryGenerator;
 
-export type WebhookRow = Webhook & RowDataPacket;
+    const updateWebhook = ((
+      webhookId: number,
+      trigger?: number,
+      url?: string
+    ) => [
+      /* sql */ `UPDATE ${webhooks} SET ${webhooks.column(
+        "trigger"
+      )} = COALESCE(?, ${webhooks.column("trigger")}), ${webhooks.column(
+        "url"
+      )} = COALESCE(?, ${webhooks.column("url")}) WHERE ${webhooks.column(
+        "webhookId"
+      )} = ?`,
+      [trigger ?? null, url ?? null, webhookId]
+    ]) satisfies QueryGenerator;
 
-export const addWebhook = ((trigger: number, url: string) => [
-  `INSERT INTO ${webhooks} (${webhooks.column("trigger")}, ${webhooks.column(
-    "url"
-  )}) VALUES(?, ?)`,
-  [trigger, url]
-]) satisfies QueryGenerator;
+    const removeWebhook = ((webhookId: number) => [
+      /* sql */ `DELETE FROM ${webhooks} WHERE ${webhooks.column(
+        "webhookId"
+      )} = ?`,
+      [webhookId]
+    ]) satisfies QueryGenerator;
 
-export const updateWebhook = ((
-  webhookId: number,
-  trigger?: number,
-  url?: string
-) => [
-  `UPDATE ${webhooks} SET ${webhooks.column(
-    "trigger"
-  )} = COALESCE(?, ${webhooks.column("trigger")}), ${webhooks.column(
-    "url"
-  )} = COALESCE(?, ${webhooks.column("url")}) WHERE ${webhooks.column(
-    "webhookId"
-  )} = ?`,
-  [trigger ?? null, url ?? null, webhookId]
-]) satisfies QueryGenerator;
+    return {
+      addWebhook,
+      updateWebhook,
+      removeWebhook
+    };
+  }),
+  false
+);
 
-export const removeWebhook = ((webhookId: number) => [
-  `DELETE FROM ${webhooks} WHERE ${webhooks.column("webhookId")} = ?`,
-  [webhookId]
-]) satisfies QueryGenerator;
+export = webhookQueries;
