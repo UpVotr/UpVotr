@@ -20,8 +20,8 @@
       }
     ],
     "paths": {
-      "@upvotr/*": ["./src/*"],
-      "@query/*": ["./query/*"]
+      "@upvotr/*": ["./app/*"],
+      "@query/*": ["./server/src/mysql/query/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
