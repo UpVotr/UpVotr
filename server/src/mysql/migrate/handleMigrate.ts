@@ -1,9 +1,14 @@
-import { Version } from "../query/version";
+import versionQueries from "../query/version";
 import createDebug from "debug";
 import { noBackCompat } from "./errors";
 import { handleV0Migrate } from "./v0";
+import { query } from "../connection";
+import { Version } from "../query/types";
+import staticHMRImport from "../../util/staticHMRImport";
 
 const debug = createDebug("upvotr:migrate");
+
+const { setVersion, getVersion } = staticHMRImport(versionQueries);
 
 const formatVersion = (ver: Version) =>
   `${ver.major}.${ver.minor}.${ver.bugFix}`;
@@ -43,4 +48,5 @@ async function migrate(old: Version, cur: Version) {
       )} to ${formatVersion(old)}`
     );
   }
+  await query(...setVersion(cur.major, cur.minor, cur.bugFix));
 }
