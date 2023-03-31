@@ -4,7 +4,7 @@ import { noBackCompat } from "./errors";
 import { handleV0Migrate } from "./v0";
 import { query } from "../connection";
 import { Version } from "../query/types";
-import staticHMRImport from "../../util/staticHMRImport";
+import staticHMRImport from "../query/staticHMRImport";
 
 const debug = createDebug("upvotr:migrate");
 
