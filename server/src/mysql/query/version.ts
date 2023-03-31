@@ -26,3 +26,5 @@ const versionQueries = createModule(
   }),
   false
 );
+
+export = versionQueries;
