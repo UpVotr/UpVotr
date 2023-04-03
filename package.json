@@ -3,10 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "cd server && tsc && cd ../ && cross-env NODE_ENV=development node --enable-source-maps server/dist/index.js",
-    "dev:debug": "cd server && tsc && cd ../ && cross-env NODE_ENV=development DEBUG=\"upvotr:*\" node --enable-source-maps server/dist/index.js",
-    "build": "cd server && tsc && cd ../ && next build",
-    "start": "NODE_ENV=production node server/dist/index.js",
+    "dev": "tsc --project ./server/tsconfig.json && cross-env NODE_ENV=development node --enable-source-maps server/dist/server/src/index.js",
+    "dev:debug": "tsc --project ./server/tsconfig.json && cross-env NODE_ENV=development DEBUG=\"upvotr:*\" node --enable-source-maps server/dist/server/src/index.js",
+    "build": "tsc --project ./server/tsconfig.json && next build",
+    "start": "NODE_ENV=production node server/dist/server/src/index.js",
     "lint": "next lint",
     "build:config": "json2ts -i util/upvotr.config.schema.json -o server/src/config.ts"
   },
@@ -18,11 +18,14 @@
     "@types/react": "18.0.29",
     "@types/react-dom": "18.0.11",
     "@upvotr/mysql-query-builder": "^1.0.10",
+    "i18next": "^22.4.14",
     "mysql2": "^3.2.0",
     "next": "13.2.4",
+    "next-i18next": "^13.2.2",
     "next-redux-wrapper": "^8.1.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-i18next": "^12.2.0",
     "react-redux": "^8.0.5",
     "redux": "^4.2.1",
     "redux-thunk": "^2.4.2",
@@ -32,12 +35,13 @@
   "devDependencies": {
     "@types/chalk": "^2.2.0",
     "@types/debug": "^4.1.7",
-    "@upvotr/node-hmr": "^2.0.1",
+    "@upvotr/node-hmr": "^2.0.3",
     "chalk": "^3.0.0",
     "cross-env": "^7.0.3",
     "debug": "^4.3.4",
     "express": "^4.18.2",
     "json-schema-to-typescript": "^12.0.0",
-    "md5": "^2.3.0"
+    "md5": "^2.3.0",
+    "sass": "^1.60.0"
   }
 }

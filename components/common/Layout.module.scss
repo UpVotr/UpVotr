@@ -1,0 +1,27 @@
+@import "../scss/theme-zinc.scss";
+
+.Layout {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 200%;
+  @include app-background-zinc-dark;
+
+  .Navigation {
+    position: relative;
+    width: 100%;
+    min-width: 0;
+    position: sticky;
+    align-self: flex-start;
+    top: 0;
+  }
+
+  .Content {
+    position: relative;
+    width: 100%;
+    flex-grow: 1;
+    flex-shrink: 0;
+    min-width: 0;
+  }
+}

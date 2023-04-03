@@ -1,0 +1,11 @@
+@function spacing($amt) {
+  @return 0.25rem * $amt;
+}
+
+@function accent() {
+  @return var(--upvotr-accent);
+}
+
+@function app-width() {
+  @return var(--max-width);
+}

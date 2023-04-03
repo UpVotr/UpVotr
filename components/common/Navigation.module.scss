@@ -1,0 +1,41 @@
+@import "../scss/common.scss";
+@import "../scss/theme-zinc.scss";
+
+.Container {
+  position: relative;
+  width: 100%;
+  height: spacing(12);
+  padding: spacing(2);
+
+  .Content {
+    position: relative;
+    max-width: app-width();
+    width: 100%;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    .AppLogo {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: spacing(2);
+
+      img {
+        height: spacing(8);
+        width: spacing(8);
+      }
+
+      .AppTitle {
+        font-size: spacing(4);
+        font-weight: 400;
+      }
+    }
+  }
+}
+
+:global(.zinc) .Container {
+  @include app-component-zinc-dark;
+  @include app-border-zinc-dark(border-bottom);
+}

@@ -1,0 +1,16 @@
+@mixin app-background-zinc-dark {
+  background-color: #18181b;
+}
+
+@mixin app-component-zinc-dark {
+  background-color: #27272a;
+  color: #fafafa;
+}
+
+@mixin app-border-zinc-dark($props...) {
+  @for $prop from 0 to length($props) {
+    #{nth($props, $prop + 1)}-color: #3f3f46;
+    #{nth($props, $prop + 1)}-style: solid;
+    #{nth($props, $prop + 1)}-width: 2px;
+  }
+}
