@@ -1,4 +1,5 @@
 import { GetServerSideProps } from "next";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { AppStore, wrapper } from "../redux/store";
 import { getAppSettings } from "./getAppSettings";
 import { setAccent, setTitle } from "../redux/slices/settingsSlice";
@@ -11,7 +12,8 @@ export const getServerSidePropsWrapper = (
     return {
       props: {}
     };
-  }
+  },
+  translations: string[] = ["common"]
 ) =>
   wrapper.getServerSideProps((store) => async (ctx) => {
     const {
@@ -19,5 +21,13 @@ export const getServerSidePropsWrapper = (
     } = await getAppSettings();
     store.dispatch(setTitle(settings.appTitle));
     store.dispatch(setAccent(settings.accentColor));
-    return await func(store, ctx);
+    const res = await func(store, ctx);
+
+    return {
+      ...res,
+      props: {
+        ...("props" in res ? res.props : {}),
+        ...(await serverSideTranslations(ctx.locale!, translations))
+      }
+    };
   });

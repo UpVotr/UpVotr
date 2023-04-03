@@ -1,4 +1,4 @@
-import { version } from "../server/src/mysql/database/tables/version";
+import { version } from "../database/tables/version";
 import { QueryGenerator } from "./queryGenerator";
 
 export const getVersion = (() => [

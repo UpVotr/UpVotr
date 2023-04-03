@@ -1,4 +1,4 @@
-import { sessions } from "../server/src/mysql/database/tables/sessions";
+import { sessions } from "../database/tables/sessions";
 import { QueryGenerator } from "./queryGenerator";
 
 export const getSessionById = ((id: string) => [

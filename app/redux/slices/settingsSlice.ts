@@ -4,10 +4,11 @@ import { HYDRATE } from "next-redux-wrapper";
 
 const initialState: Omit<Settings, "key" | "postsPublicByDefault"> = {
   appTitle: "UpVotr Feedback",
-  accentColor: "DB2777"
+  accentColor: "DB2777",
+  theme: "zinc"
 };
 
-const settingsSlice = createSlice({
+export const settingsSlice = createSlice({
   name: "settings",
   initialState,
   reducers: {
@@ -16,20 +17,20 @@ const settingsSlice = createSlice({
     },
     setTitle(state, action: PayloadAction<string>) {
       state.appTitle = action.payload;
+    },
+    setTheme(state, action: PayloadAction<(typeof initialState)["theme"]>) {
+      state.theme = action.payload;
     }
   },
   extraReducers: {
     [HYDRATE](state, action: PayloadAction<{ settings: typeof initialState }>) {
       return {
         appTitle: action.payload.settings.appTitle,
-        accentColor: action.payload.settings.accentColor
+        accentColor: action.payload.settings.accentColor,
+        theme: action.payload.settings.theme
       };
     }
   }
 });
-
-const settingsReducer = settingsSlice.reducer;
-
-export default settingsReducer;
 
 export const { setAccent, setTitle } = settingsSlice.actions;

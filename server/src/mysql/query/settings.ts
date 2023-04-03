@@ -1,4 +1,4 @@
-import { settings } from "../server/src/mysql/database/tables/settings";
+import { settings } from "../database/tables/settings";
 import { QueryGenerator } from "./queryGenerator";
 import { Settings } from "./types";
 

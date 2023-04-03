@@ -1,4 +1,4 @@
-import { notifications } from "../server/src/mysql/database/tables/notifications";
+import { notifications } from "../database/tables/notifications";
 import { QueryGenerator } from "./queryGenerator";
 
 export const createNotification = ((

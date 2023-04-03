@@ -1,7 +1,4 @@
-import {
-  roleDefinitions,
-  roles
-} from "../server/src/mysql/database/tables/roles";
+import { roleDefinitions, roles } from "../database/tables/roles";
 import { QueryGenerator } from "./queryGenerator";
 
 export const addRoleToUser = ((userId: string, roleId: number) => [

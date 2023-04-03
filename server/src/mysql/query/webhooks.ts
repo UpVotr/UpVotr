@@ -1,4 +1,4 @@
-import { webhooks } from "../server/src/mysql/database/tables/webhooks";
+import { webhooks } from "../database/tables/webhooks";
 import { QueryGenerator } from "./queryGenerator";
 
 export const addWebhook = ((trigger: number, url: string) => [

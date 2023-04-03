@@ -1,4 +1,4 @@
-import { posts } from "../server/src/mysql/database/tables/posts";
+import { posts } from "../database/tables/posts";
 import { QueryGenerator } from "./queryGenerator";
 
 export const createPost = ((

@@ -27,6 +27,12 @@ export const settings = new Table(
       type: "BOOLEAN",
       notNull: true,
       default: "TRUE"
+    },
+    {
+      name: "theme",
+      type: "ENUM('slate', 'gray', 'zinc', 'neutral', 'stone')",
+      notNull: true,
+      default: "'zinc'"
     }
   ] as const,
   "PRIMARY KEY(`key`)"

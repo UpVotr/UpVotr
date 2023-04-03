@@ -1,18 +1,15 @@
 import { Table } from "@upvotr/mysql-query-builder";
 import type { RowDataPacket } from "mysql2";
-import { comments } from "../server/src/mysql/database/tables/comments";
-import { notifications } from "../server/src/mysql/database/tables/notifications";
-import { posts } from "../server/src/mysql/database/tables/posts";
-import {
-  roleDefinitions,
-  roles
-} from "../server/src/mysql/database/tables/roles";
-import { sessions } from "../server/src/mysql/database/tables/sessions";
-import { settings } from "../server/src/mysql/database/tables/settings";
-import { tags, tagDefinitions } from "../server/src/mysql/database/tables/tags";
-import { users } from "../server/src/mysql/database/tables/users";
-import { version } from "../server/src/mysql/database/tables/version";
-import { webhooks } from "../server/src/mysql/database/tables/webhooks";
+import { comments } from "../database/tables/comments";
+import { notifications } from "../database/tables/notifications";
+import { posts } from "../database/tables/posts";
+import { roleDefinitions, roles } from "../database/tables/roles";
+import { sessions } from "../database/tables/sessions";
+import { settings } from "../database/tables/settings";
+import { tags, tagDefinitions } from "../database/tables/tags";
+import { users } from "../database/tables/users";
+import { version } from "../database/tables/version";
+import { webhooks } from "../database/tables/webhooks";
 
 export type Comment = Table.RowType<typeof comments>;
 export type CommentRow = Comment & RowDataPacket;

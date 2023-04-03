@@ -51,10 +51,7 @@ const serverModule = createModule(
     },
     async () => {}
   ),
-  new Runner(
-    () => {},
-    () => {}
-  ),
+  new Runner(() => {}),
   false
 );
 

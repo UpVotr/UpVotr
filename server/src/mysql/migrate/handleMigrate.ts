@@ -1,14 +1,11 @@
-import versionQueries from "../../../../query/version";
+import { setVersion } from "@query/version";
 import createDebug from "debug";
 import { noBackCompat } from "./errors";
 import { handleV0Migrate } from "./v0";
 import { query } from "../connection";
-import { Version } from "../../../../query/types";
-import staticHMRImport from "../../../../query/staticHMRImport";
+import { Version } from "@query/types";
 
 const debug = createDebug("upvotr:migrate");
-
-const { setVersion, getVersion } = staticHMRImport(versionQueries);
 
 const formatVersion = (ver: Version) =>
   `${ver.major}.${ver.minor}.${ver.bugFix}`;

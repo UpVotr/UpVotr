@@ -5,12 +5,12 @@ import {
   createPool
 } from "mysql2/promise";
 import { config } from "../loadedConfig";
-import { setupDatabase, database } from "./database/database";
+import { setupDatabase } from "./database/database";
 import createDebug from "debug";
 import { handleMigrate } from "./migrate/handleMigrate";
-import { Version, VersionRow } from "../../../query/types";
+import { Version, VersionRow } from "@query/types";
 import { readFileSync } from "fs";
-import { getVersion } from "../../../query/version";
+import { getVersion } from "@query/version";
 
 const debug = createDebug("upvotr:database");
 
@@ -35,10 +35,10 @@ const db = createPool({
 
 export async function initDatabase() {
   try {
+    await db.query(setupDatabase);
     if (config.mysql.autoconfigure) {
       try {
         debug("Attempting to automatically configure database...");
-        await db.query(setupDatabase);
         await handleMigrate(
           (
             await query<VersionRow[]>(...getVersion())
@@ -50,8 +50,6 @@ export async function initDatabase() {
         console.error("Failed to automatically configure database.");
         throw e;
       }
-    } else {
-      await db.query(database.use());
     }
   } catch (e) {
     console.error("Failed to connect to database:", e);

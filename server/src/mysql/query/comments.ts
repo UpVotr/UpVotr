@@ -1,4 +1,4 @@
-import { comments } from "../server/src/mysql/database/tables/comments";
+import { comments } from "../database/tables/comments";
 import { QueryGenerator } from "./queryGenerator";
 
 export const addComment = ((

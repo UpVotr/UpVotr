@@ -1,6 +1,6 @@
 import { query } from "../connection";
 import { autoconfigureDatabase } from "../database/database";
-import { Version } from "../../../../query/types";
+import { Version } from "@query/types";
 import { unknownVersion } from "./errors";
 
 export async function handleV0Migrate(
@@ -8,6 +8,7 @@ export async function handleV0Migrate(
   cur: Version
 ): Promise<Version> {
   if (old.minor === 0) {
+    console.log(autoconfigureDatabase);
     await query(autoconfigureDatabase);
     return cur;
   }

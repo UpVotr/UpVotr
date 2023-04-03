@@ -1,4 +1,4 @@
-import { tagDefinitions, tags } from "../server/src/mysql/database/tables/tags";
+import { tagDefinitions, tags } from "../database/tables/tags";
 import { QueryGenerator } from "./queryGenerator";
 
 export const addTagToPost = ((tagId: number, postId: string) => [

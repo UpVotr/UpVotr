@@ -34,7 +34,8 @@ export const db = createPool({
   connectionLimit: config.mysql.connection.connectionLimit,
   user: config.mysql.login.user,
   password: config.mysql.login.password,
-  multipleStatements: true
+  multipleStatements: true,
+  database: config.mysql.database.name
 });
 
 export async function query<

@@ -1,6 +1,6 @@
 import { combineReducers } from "redux";
-import settingsReducer from "./slices/settingsSlice";
+import { settingsSlice } from "./slices/settingsSlice";
 
 export const reducer = combineReducers({
-  settings: settingsReducer
+  [settingsSlice.name]: settingsSlice.reducer
 });
