@@ -14,10 +14,7 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "incremental": true,
-    "sourceMap": true,
-    "paths": {
-      "@query/*": ["./src/mysql/query/*"]
-    }
+    "sourceMap": true
   },
   "include": ["./src/**/*.d.ts", "./src/**/*.ts"],
   "exclude": ["node_modules"]

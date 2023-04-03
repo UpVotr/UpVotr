@@ -8,9 +8,9 @@ import { config } from "../loadedConfig";
 import { setupDatabase } from "./database/database";
 import createDebug from "debug";
 import { handleMigrate } from "./migrate/handleMigrate";
-import { Version, VersionRow } from "@query/types";
+import { Version, VersionRow } from "./query/types";
 import { readFileSync } from "fs";
-import { getVersion } from "@query/version";
+import { getVersion } from "./query/version";
 
 const debug = createDebug("upvotr:database");
 

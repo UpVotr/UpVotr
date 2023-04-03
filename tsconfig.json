@@ -21,7 +21,7 @@
     ],
     "paths": {
       "@app/*": ["./app/*"],
-      "@query/*": ["server/src/mysql/query/*"]
+      "@query/*": ["./server/src/mysql/query/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],

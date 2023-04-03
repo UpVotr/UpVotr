@@ -1,9 +1,9 @@
-import { setVersion } from "@query/version";
+import { setVersion } from "../query/version";
 import createDebug from "debug";
 import { noBackCompat } from "./errors";
 import { handleV0Migrate } from "./v0";
 import { query } from "../connection";
-import { Version } from "@query/types";
+import { Version } from "../query/types";
 
 const debug = createDebug("upvotr:migrate");
 
