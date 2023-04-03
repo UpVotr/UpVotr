@@ -1,10 +1,10 @@
-import versionQueries from "../query/version";
+import versionQueries from "../../../../query/version";
 import createDebug from "debug";
 import { noBackCompat } from "./errors";
 import { handleV0Migrate } from "./v0";
 import { query } from "../connection";
-import { Version } from "../query/types";
-import staticHMRImport from "../query/staticHMRImport";
+import { Version } from "../../../../query/types";
+import staticHMRImport from "../../../../query/staticHMRImport";
 
 const debug = createDebug("upvotr:migrate");
 

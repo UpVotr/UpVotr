@@ -1,6 +1,6 @@
 import { query } from "../connection";
 import { autoconfigureDatabase } from "../database/database";
-import { Version } from "../query/types";
+import { Version } from "../../../../query/types";
 import { unknownVersion } from "./errors";
 
 export async function handleV0Migrate(

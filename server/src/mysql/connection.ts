@@ -8,12 +8,9 @@ import { config } from "../loadedConfig";
 import { setupDatabase, database } from "./database/database";
 import createDebug from "debug";
 import { handleMigrate } from "./migrate/handleMigrate";
-import { Version, VersionRow } from "./query/types";
-import versionQueries from "./query/version";
+import { Version, VersionRow } from "../../../query/types";
 import { readFileSync } from "fs";
-import staticHMRImport from "./query/staticHMRImport";
-
-const { getVersion } = staticHMRImport(versionQueries);
+import { getVersion } from "../../../query/version";
 
 const debug = createDebug("upvotr:database");
 
