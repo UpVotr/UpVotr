@@ -9,3 +9,23 @@
 @function app-width() {
   @return var(--max-width);
 }
+
+@mixin max-width {
+  max-width: app-width();
+  width: 100%;
+  margin: auto;
+}
+
+@mixin mobile {
+  @media only screen and (max-width: 640px) {
+    @content;
+  }
+}
+
+@mixin borders-style($color, $props...) {
+  @for $prop from 0 to length($props) {
+    #{nth($props, $prop + 1)}-color: $color;
+    #{nth($props, $prop + 1)}-style: solid;
+    #{nth($props, $prop + 1)}-width: 2px;
+  }
+}

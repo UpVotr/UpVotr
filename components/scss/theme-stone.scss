@@ -1,0 +1,27 @@
+@import "./common.scss";
+
+@mixin app-background-stone-light {
+  background-color: #e7e5e4;
+}
+
+@mixin app-background-stone-dark {
+  background-color: #1c1917;
+}
+
+@mixin app-component-stone-light {
+  background-color: #f5f5f4;
+  color: #0c0a09;
+}
+
+@mixin app-component-stone-dark {
+  background-color: #292524;
+  color: #fafaf9;
+}
+
+@mixin app-border-stone-light($props...) {
+  @include borders-style(#d6d3d1, $props...);
+}
+
+@mixin app-border-stone-dark($props...) {
+  @include borders-style(#44403c, $props...);
+}

@@ -8,7 +8,6 @@ export async function handleV0Migrate(
   cur: Version
 ): Promise<Version> {
   if (old.minor === 0) {
-    console.log(autoconfigureDatabase);
     await query(autoconfigureDatabase);
     return cur;
   }

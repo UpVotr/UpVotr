@@ -1,5 +1,5 @@
 @import "../scss/common.scss";
-@import "../scss/theme-zinc.scss";
+@import "../scss/themes.scss";
 
 .Container {
   position: relative;
@@ -9,18 +9,20 @@
 
   .Content {
     position: relative;
-    max-width: app-width();
-    width: 100%;
-    margin: auto;
     display: flex;
     flex-direction: row;
     align-items: center;
+
+    @include max-width;
 
     .AppLogo {
       display: flex;
       flex-direction: row;
       align-items: center;
       gap: spacing(2);
+      user-select: none;
+      color: inherit;
+      text-decoration: none;
 
       img {
         height: spacing(8);
@@ -35,7 +37,47 @@
   }
 }
 
+:global(.slate) .Container {
+  @include app-component-slate-light;
+  @include app-border-slate-light(border-bottom);
+}
+:global(.slate.dark) .Container {
+  @include app-component-slate-dark;
+  @include app-border-slate-dark(border-bottom);
+}
+
+:global(.gray) .Container {
+  @include app-component-gray-light;
+  @include app-border-gray-light(border-bottom);
+}
+:global(.gray.dark) .Container {
+  @include app-component-gray-dark;
+  @include app-border-gray-dark(border-bottom);
+}
+
 :global(.zinc) .Container {
+  @include app-component-zinc-light;
+  @include app-border-zinc-light(border-bottom);
+}
+:global(.zinc.dark) .Container {
   @include app-component-zinc-dark;
   @include app-border-zinc-dark(border-bottom);
+}
+
+:global(.neutral) .Container {
+  @include app-component-neutral-light;
+  @include app-border-neutral-light(border-bottom);
+}
+:global(.neutral.dark) .Container {
+  @include app-component-neutral-dark;
+  @include app-border-neutral-dark(border-bottom);
+}
+
+:global(.stone) .Container {
+  @include app-component-stone-light;
+  @include app-border-stone-light(border-bottom);
+}
+:global(.stone.dark) .Container {
+  @include app-component-stone-dark;
+  @include app-border-stone-dark(border-bottom);
 }

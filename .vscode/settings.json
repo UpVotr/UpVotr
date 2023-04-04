@@ -6,5 +6,8 @@
       "fileMatch": ["/upvotr.config.json"],
       "url": "/util/upvotr.config.schema.json"
     }
-  ]
+],
+"i18n-ally.localesPaths": [
+    "public/locales"
+]
 }

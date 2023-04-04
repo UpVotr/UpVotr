@@ -1,0 +1,27 @@
+@import "./common.scss";
+
+@mixin app-background-slate-light {
+  background-color: #e2e8f0;
+}
+
+@mixin app-background-slate-dark {
+  background-color: #0f172a;
+}
+
+@mixin app-component-slate-light {
+  background-color: #f1f5f9;
+  color: #020617;
+}
+
+@mixin app-component-slate-dark {
+  background-color: #1e293b;
+  color: #f8fafc;
+}
+
+@mixin app-border-slate-light($props...) {
+  @include borders-style(#cbd5e1, $props...);
+}
+
+@mixin app-border-slate-dark($props...) {
+  @include borders-style(#334155, $props...);
+}

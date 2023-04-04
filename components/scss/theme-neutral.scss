@@ -1,0 +1,27 @@
+@import "./common.scss";
+
+@mixin app-background-neutral-light {
+  background-color: #e5e5e5;
+}
+
+@mixin app-background-neutral-dark {
+  background-color: #171717;
+}
+
+@mixin app-component-neutral-light {
+  background-color: #f5f5f5;
+  color: #0a0a0a;
+}
+
+@mixin app-component-neutral-dark {
+  background-color: #262626;
+  color: #fafafa;
+}
+
+@mixin app-border-neutral-light($props...) {
+  @include borders-style(#d4d4d4, $props...);
+}
+
+@mixin app-border-neutral-dark($props...) {
+  @include borders-style(#404040, $props...);
+}

@@ -1,27 +1,68 @@
-@import "../scss/theme-zinc.scss";
+@import "../scss/themes.scss";
+@import "../scss/common.scss";
 
-.Layout {
+.Wrapper {
   position: absolute;
-  display: flex;
-  flex-direction: column;
   width: 100%;
-  min-height: 200%;
+  min-height: 100%;
+
+  .Layout {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-height: 200%;
+
+    .Navigation {
+      position: relative;
+      width: 100%;
+      min-width: 0;
+      position: sticky;
+      align-self: flex-start;
+      top: 0;
+    }
+
+    .Content {
+      position: relative;
+      width: 100%;
+      flex-grow: 1;
+      flex-shrink: 0;
+      min-width: 0;
+    }
+  }
+}
+
+:global(.slate) .Layout {
+  @include app-background-slate-light;
+}
+:global(.slate.dark) .Layout {
+  @include app-background-slate-dark;
+}
+
+:global(.gray) .Layout {
+  @include app-background-gray-light;
+}
+:global(.gray.dark) .Layout {
+  @include app-background-gray-dark;
+}
+
+:global(.zinc) .Layout {
+  @include app-background-zinc-light;
+}
+:global(.zinc.dark) .Layout {
   @include app-background-zinc-dark;
+}
 
-  .Navigation {
-    position: relative;
-    width: 100%;
-    min-width: 0;
-    position: sticky;
-    align-self: flex-start;
-    top: 0;
-  }
+:global(.neutral) .Layout {
+  @include app-background-neutral-light;
+}
+:global(.neutral.dark) .Layout {
+  @include app-background-neutral-dark;
+}
 
-  .Content {
-    position: relative;
-    width: 100%;
-    flex-grow: 1;
-    flex-shrink: 0;
-    min-width: 0;
-  }
+:global(.stone) .Layout {
+  @include app-background-stone-light;
+}
+:global(.stone.dark) .Layout {
+  @include app-background-stone-dark;
 }

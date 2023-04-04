@@ -2,6 +2,12 @@
   --max-width: 1100px;
 }
 
+@media only screen and (min-width: 2000px) {
+  :root {
+    --max-width: 1900px !important;
+  }
+}
+
 * {
   box-sizing: border-box;
   padding: 0;
@@ -23,8 +29,6 @@ body {
   position: fixed;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
+html:has(#layout.dark) {
+  color-scheme: dark;
 }
