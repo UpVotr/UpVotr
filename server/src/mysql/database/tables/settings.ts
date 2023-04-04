@@ -20,7 +20,7 @@ export const settings = new Table(
       name: "accentColor",
       type: "CHAR(6)",
       notNull: true,
-      default: "'DB2777'"
+      default: "'FF54E2'"
     },
     {
       name: "postsPublicByDefault",
@@ -33,6 +33,12 @@ export const settings = new Table(
       type: "ENUM('slate', 'gray', 'zinc', 'neutral', 'stone')",
       notNull: true,
       default: "'zinc'"
+    },
+    {
+      name: "accentOnNav",
+      type: "BOOLEAN",
+      notNull: true,
+      default: "FALSE"
     }
   ] as const,
   "PRIMARY KEY(`key`)"

@@ -81,3 +81,9 @@
   @include app-component-stone-dark;
   @include app-border-stone-dark(border-bottom);
 }
+
+:global(.nav-accent) .Container {
+  background-color: accent() !important;
+  border-bottom-color: rgba(255, 255, 255, 0.35) !important;
+  color: white !important;
+}

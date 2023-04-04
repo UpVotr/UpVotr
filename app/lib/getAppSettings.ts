@@ -4,6 +4,6 @@ import { getSettings } from "@query/settings";
 
 export function getAppSettings() {
   return query<SettingsRow[]>(
-    ...getSettings(["appTitle", "accentColor", "theme"])
+    ...getSettings(["appTitle", "accentColor", "theme", "accentOnNav"])
   );
 }

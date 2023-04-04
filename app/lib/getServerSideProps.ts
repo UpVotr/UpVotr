@@ -2,7 +2,7 @@ import { GetServerSideProps } from "next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { AppStore, wrapper } from "../redux/store";
 import { getAppSettings } from "./getAppSettings";
-import { setAccent, setTitle } from "../redux/slices/settingsSlice";
+import { loadSettings } from "../redux/slices/settingsSlice";
 
 export const getServerSidePropsWrapper = (
   func: (
@@ -19,8 +19,7 @@ export const getServerSidePropsWrapper = (
     const {
       result: [settings]
     } = await getAppSettings();
-    store.dispatch(setTitle(settings.appTitle));
-    store.dispatch(setAccent(settings.accentColor));
+    store.dispatch(loadSettings(settings));
     const res = await func(store, ctx);
 
     return {

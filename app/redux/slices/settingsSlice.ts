@@ -4,33 +4,24 @@ import { HYDRATE } from "next-redux-wrapper";
 
 const initialState: Omit<Settings, "key" | "postsPublicByDefault"> = {
   appTitle: "UpVotr Feedback",
-  accentColor: "DB2777",
-  theme: "zinc"
+  accentColor: "FF54E2",
+  theme: "zinc",
+  accentOnNav: 0
 };
 
 export const settingsSlice = createSlice({
   name: "settings",
   initialState,
   reducers: {
-    setAccent(state, action: PayloadAction<string>) {
-      state.accentColor = action.payload;
-    },
-    setTitle(state, action: PayloadAction<string>) {
-      state.appTitle = action.payload;
-    },
-    setTheme(state, action: PayloadAction<(typeof initialState)["theme"]>) {
-      state.theme = action.payload;
+    loadSettings(state, action: PayloadAction<typeof initialState>) {
+      Object.assign(state, action.payload);
     }
   },
   extraReducers: {
     [HYDRATE](state, action: PayloadAction<{ settings: typeof initialState }>) {
-      return {
-        appTitle: action.payload.settings.appTitle,
-        accentColor: action.payload.settings.accentColor,
-        theme: action.payload.settings.theme
-      };
+      return action.payload.settings;
     }
   }
 });
 
-export const { setAccent, setTitle } = settingsSlice.actions;
+export const { loadSettings } = settingsSlice.actions;
