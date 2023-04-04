@@ -10,6 +10,7 @@ import { tags, tagDefinitions } from "../database/tables/tags";
 import { users } from "../database/tables/users";
 import { version } from "../database/tables/version";
 import { webhooks } from "../database/tables/webhooks";
+import type { Cookie } from "express-session";
 
 export type Comment = Table.RowType<typeof comments>;
 export type CommentRow = Comment & RowDataPacket;
@@ -25,7 +26,9 @@ export type RoleRow = Role & RowDataPacket;
 export type RoleDefinition = Table.RowType<typeof roleDefinitions>;
 export type RoleDefinitionRow = RoleDefinition & RowDataPacket;
 
-export type Session = Table.RowType<typeof sessions>;
+export type Session = Table.RowType<typeof sessions> & {
+  cookie: Cookie;
+};
 export type SessionRow = Session & RowDataPacket;
 
 export type Settings = Table.RowType<typeof settings>;

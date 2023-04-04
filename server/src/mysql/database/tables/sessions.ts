@@ -7,7 +7,6 @@ export const sessions = new Table(
     {
       name: "userId",
       type: "VARCHAR(36)",
-      notNull: true,
       raw: "`userId` VARCHAR(36) CHARACTER SET utf8mb3"
     },
     {
@@ -18,6 +17,11 @@ export const sessions = new Table(
     {
       name: "expires",
       type: "TIMESTAMP",
+      notNull: true
+    },
+    {
+      name: "cookie",
+      type: "JSON",
       notNull: true
     }
   ] as const,
