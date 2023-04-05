@@ -1,11 +1,13 @@
 import { Action, ThunkAction, configureStore } from "@reduxjs/toolkit";
-import { reducer } from "./reducer";
+import { middleware, reducer } from "./reducer";
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 import { createWrapper } from "next-redux-wrapper";
 
 export const makeStore = () =>
   configureStore({
     reducer,
+    middleware: (getDefaultMiddleware) =>
+      getDefaultMiddleware().concat(middleware),
     devTools: process.env.NODE_ENV === "development"
   });
 

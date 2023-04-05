@@ -34,12 +34,16 @@
   },
   "devDependencies": {
     "@types/chalk": "^2.2.0",
+    "@types/cookie-signature": "^1.1.0",
     "@types/debug": "^4.1.7",
+    "@types/express-session": "^1.17.7",
     "@upvotr/node-hmr": "^2.0.3",
     "chalk": "^3.0.0",
+    "cookie-signature": "^1.2.1",
     "cross-env": "^7.0.3",
     "debug": "^4.3.4",
     "express": "^4.18.2",
+    "express-session": "^1.17.3",
     "json-schema-to-typescript": "^12.0.0",
     "md5": "^2.3.0",
     "sass": "^1.60.0"

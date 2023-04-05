@@ -1,6 +1,7 @@
 import HMRRuntime, {
+  AsyncRunner,
+  ExportType,
   PersistManager,
-  Runner,
   createModule
 } from "@upvotr/node-hmr";
 import express from "express";
@@ -8,6 +9,7 @@ import next from "next";
 import { ContentWatcher } from "./dev/contentWatcher";
 import { config } from "./loadedConfig";
 import chalk from "chalk";
+import { appSession } from "./session";
 
 const serverModule = createModule(
   new PersistManager(
@@ -32,9 +34,7 @@ const serverModule = createModule(
       await nextApp.prepare();
       const expressApp = express();
 
-      expressApp.all("*", (req, res) => {
-        return handle(req, res);
-      });
+      expressApp.use(appSession);
 
       expressApp.listen(serverConf.port, () => {
         console.log(
@@ -46,12 +46,28 @@ const serverModule = createModule(
       return {
         nextApp,
         expressApp,
-        runtime
+        runtime,
+        handle
       };
     },
     async () => {}
   ),
-  new Runner(() => {}),
+  new AsyncRunner(
+    async ({ expressApp, handle, runtime }) => {
+      const sessionRouter = await runtime.import<
+        ExportType<typeof import("./routes/session")>
+      >("./routes/session");
+      expressApp.use("/u", (req, res, next) =>
+        sessionRouter.exports ? sessionRouter.exports(req, res, next) : next()
+      );
+      expressApp.all("*", (req, res) => {
+        return handle(req, res);
+      });
+    },
+    ({ expressApp }) => {
+      expressApp._router.stack = [];
+    }
+  ),
   false
 );
 

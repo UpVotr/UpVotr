@@ -70,6 +70,19 @@
         }
       },
       "required": ["login"]
+    },
+    "cookie_secret": {
+      "oneOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      ]
     }
   },
   "definitions": {
@@ -84,6 +97,6 @@
       "additionalProperties": false
     }
   },
-  "required": ["mysql"],
+  "required": ["mysql", "cookie_secret"],
   "additionalProperties": false
 }

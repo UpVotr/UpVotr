@@ -1,0 +1,8 @@
+{
+  "400": "Bad request",
+  "401": "You are not authorized to view this content",
+  "403": "You do not have permission to view this content",
+  "404": "Page not found",
+  "500": "Internal server error",
+  "unknown": "Unknown error"
+}

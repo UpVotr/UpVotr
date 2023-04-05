@@ -58,6 +58,7 @@ export interface UpVotrConfig {
     };
     [k: string]: unknown;
   };
+  cookie_secret: string | string[];
 }
 /**
  * Server hostname and port

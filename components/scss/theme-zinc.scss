@@ -1,4 +1,4 @@
-@import "./common.scss";
+@import "../../app/common.scss";
 
 @mixin app-background-zinc-light {
   background-color: #e4e4e7;
@@ -16,6 +16,14 @@
 @mixin app-component-zinc-dark {
   background-color: #27272a;
   color: #fafafa;
+}
+
+@mixin app-component-zinc-hover-light {
+  background-color: #d4d4d8;
+}
+
+@mixin app-component-zinc-hover-dark {
+  background-color: #3f3f46;
 }
 
 @mixin app-border-zinc-light($props...) {

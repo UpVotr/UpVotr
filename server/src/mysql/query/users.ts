@@ -25,7 +25,7 @@ export const getUser = ((
   columns: Parameters<(typeof users)["column"]>[0][]
 ) => [
   /* sql */ `SELECT ${columns
-    .map(users.column)
+    .map((col) => users.column(col))
     .join(", ")} FROM ${users} WHERE ${users.column("userId")} = ?`,
   [uuid]
 ]) satisfies QueryGenerator;

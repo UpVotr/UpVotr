@@ -1,6 +1,8 @@
 {
   "navigation": {
-    "icon-alt": "{{appTitle}} Icon",
-    "login-alt": "Log in"
+    "icon-alt": "{{appTitle}} icon",
+    "login": "Log in",
+    "user-profile": "User profile",
+    "notifications": "Notifications"
   }
 }

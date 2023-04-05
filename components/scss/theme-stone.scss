@@ -1,4 +1,4 @@
-@import "./common.scss";
+@import "../../app/common.scss";
 
 @mixin app-background-stone-light {
   background-color: #e7e5e4;
@@ -16,6 +16,14 @@
 @mixin app-component-stone-dark {
   background-color: #292524;
   color: #fafaf9;
+}
+
+@mixin app-component-stone-hover-light {
+  background-color: #d6d3d1;
+}
+
+@mixin app-component-stone-hover-dark {
+  background-color: #44403c;
 }
 
 @mixin app-border-stone-light($props...) {

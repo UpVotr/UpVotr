@@ -1,4 +1,4 @@
-@import "./common.scss";
+@import "../../app/common.scss";
 
 @mixin app-background-neutral-light {
   background-color: #e5e5e5;
@@ -16,6 +16,14 @@
 @mixin app-component-neutral-dark {
   background-color: #262626;
   color: #fafafa;
+}
+
+@mixin app-component-neutral-hover-light {
+  background-color: #d4d4d4;
+}
+
+@mixin app-component-neutral-hover-dark {
+  background-color: #404040;
 }
 
 @mixin app-border-neutral-light($props...) {

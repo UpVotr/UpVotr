@@ -1,5 +1,5 @@
 @import "../scss/themes.scss";
-@import "../scss/common.scss";
+@import "../../app/common.scss";
 
 .Wrapper {
   position: absolute;
@@ -11,7 +11,7 @@
     display: flex;
     flex-direction: column;
     width: 100%;
-    min-height: 200%;
+    min-height: 100%;
 
     .Navigation {
       position: relative;
@@ -20,6 +20,7 @@
       position: sticky;
       align-self: flex-start;
       top: 0;
+      z-index: 9999;
     }
 
     .Content {
@@ -28,6 +29,7 @@
       flex-grow: 1;
       flex-shrink: 0;
       min-width: 0;
+      z-index: 0;
     }
   }
 }
